@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
 import config from '../../config';
 import engine from '../../engine';
 import Loader from '../Loader/Loader';
