@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import moment from 'moment';
 import config from '../../config';
 import engine from '../../engine';
 import Loader from '../Loader/Loader';
