@@ -97,7 +97,7 @@ export default class SignUp extends Component {
     render() {
         return (
             <div className="column center">
-                <div className="linear-dark">
+                <div className="white">
                     <div className="row center">
                         <div className="col-1">
                 {this.renderRedirect()}
@@ -108,7 +108,7 @@ export default class SignUp extends Component {
                     <input type="number" id="reguserphone" name="reguserphone" placeholder="Phone number" title="Enter Phone Number" required /><br />
                     <input type="password" id="reguserpassword" name="reguserpassword" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                         title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required /><br />
-                    <button id="btnRegisterSubmit" className="blue" type="submit">Register</button>
+                    <button id="btnRegisterSubmit" className="black" type="submit">Register</button>
                 </form>
                 {this.showerror()}
                 <a href="/SignIn"> Already have an account? Sign In</a>

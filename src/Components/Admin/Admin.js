@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
-import config from '../../config';
-import engine from '../../engine';
+//import { Redirect } from 'react-router-dom'
+//import config from '../../config';
 import Loader from '../Loader/Loader';
-import { read_cookie } from 'sfcookies';
+//import { read_cookie } from 'sfcookies';
 
 export default class Admin extends Component {
 
@@ -12,23 +11,16 @@ export default class Admin extends Component {
         super(props);
 
         this.state = {
-            config: config,
-            userid: engine.decrypt(read_cookie(config.cookie_key)),
+            //userid: engine.decrypt(read_cookie(config.cookie_key)),
             error: null,
             isLoading: true,
             showModal: false
         }
     }
 
-    renderRedirect = () => {
-        if (read_cookie(config.cookie_key).length !== 0) {
-            return <Redirect to='/Dashboard/' />
-        }
-    }
-
     setIsLoading = data => {
         this.setState({
-            isLoading: data
+            isLoading: false
         })
     }
 
@@ -38,17 +30,20 @@ export default class Admin extends Component {
         }
     }
 
+    componentDidMount() {
+        this.setIsLoading();
+    }
+
     render() {
-        this.renderRedirect()
         if (this.state.isLoading) {
             return (
-                <Loader loadingtype={"Loading User Information"} />
+                <Loader loadingtype={"Admin Information"} />
             );
         }
         else {
             return (
                 <div className="column center">
-
+                    <h1>Welcome Admin</h1>
                 </div>
             )
         }

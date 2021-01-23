@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+//import { Redirect } from 'react-router-dom';
 import config from '../../config';
-import engine from '../../engine';
-import { bake_cookie, read_cookie } from 'sfcookies';
+import User from '../User/User';
+import Member from '../Member/Member';
+import Admin from '../Admin/Admin';
 
-export default class SignIn extends Component {
+export default class Dashboard extends Component {
 
     constructor(props) {
 
         super(props);
 
         this.state = {
+            user: {
+                role: "member"
+            },
             config: config,
             error: null,
             isLoading: true,
         }
+    }
+
+    renderRedirect = () => {
+        //if (read_cookie(config.cookie_key).length === 0) {
+        //    return <Redirect to='/SignIn/' />
+        //}
     }
 
     renderui = () => {
@@ -29,9 +39,13 @@ export default class SignIn extends Component {
         }
     }
 
+    componentDidMount() {
+        this.renderRedirect()
+    }
+
     render() {
         return (
-            {renderui}
+            this.renderui()
         )
     }
 }

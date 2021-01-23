@@ -9,6 +9,7 @@ export default class Footer extends Component {
                     <div className="row content">
                         <div className="column col-4">
                             <h6>App Name</h6>
+                            <img src="logo.jpg" width="100" alt="Logo Container"/>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                         </div>
                         <div className="column col-4 center">
@@ -36,10 +37,12 @@ export default class Footer extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="row">
+                <div className="dark">
+                    <div className="row content">
                     <div className="column col-1 center" >
                         <p>Designed & Developed by Eman Curmi &copy;
                         Copyright 2020</p>
+                        </div>
                     </div>
                 </div>
             </div>

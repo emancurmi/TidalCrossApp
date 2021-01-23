@@ -13,9 +13,7 @@ export default class Loader extends Component {
 
     render() {
         return (
-            <header className="Loading">
-                <h1>Loading {this.state.loadingtype}</h1>
-            </header>
+            <div className="loader">Loading...</div>
         );
     }
 }

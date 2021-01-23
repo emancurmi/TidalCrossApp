@@ -1,98 +1,81 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import config from '../../config';
-import engine from '../../engine';
-import { bake_cookie, read_cookie } from 'sfcookies';
 
-export default class SignIn extends Component {
-
+export default class CreateOrderForm extends Component {
     constructor(props) {
-
         super(props);
 
         this.state = {
-            config: config,
+            selectedshop: 'Select Shop',
+            shops: [{
+                id: '',
+                name: ''
+            }],
             error: null,
-            isLoading: true,
+            isLoading: false,
+            showModal: false
         }
     }
 
-    renderRedirect = () => {
-        if (read_cookie(config.cookie_key).length !== 0) {
-            return <Redirect to='/Dashboard/' />
-        }
+    fetchshops = () => {
+        this.setState({
+            shops: [
+                { id: '1', name: 'Afghanistan' },
+                { id: '2', name: 'Aland Islands' },
+                { id: '3', name: 'Albania' }
+            ]
+        });
     }
 
     handleSubmit = e => {
-
         e.preventDefault();
-
-        const { userphone, userpin } = e.target;
-
-        const user = {
-            userphone: userphone.value,
-            userpin: userpin.value
+        const { orderbox } = e.target;
+        const order = {
+            shop: this.state.shop,
+            orderinfo: orderbox.value
         }
+        if (order.shop === 'Select Shop') {
+            this.setState({ error: "Select Shop" });
+        }
+        else {
 
-        this.setState({ error: null })
+            this.setState({ error: null });
 
-        fetch(this.state.config.API_ENDPOINT + 'user/?useremail=' + user.userphone + '&userpin=' + user.userpin, {
-            method: 'GET',
-            headers: {
-                'content-type': 'application/json',
-                'Authorization': `Bearer ${this.state.config.API_TOKEN}`
-            }
-        })
-            .then(res => {
-                if (!res.ok) {
-                    return res.json().then(error => Promise.reject(error))
-                }
-                return res.json()
-            })
-
-            .then(data => {
-                console.log(data.length);
-                if (data.length !== 0) {
-                    userphone.value = '';
-                    userpin.value = '';
-                    this.setUser(data);
-                }
-                else {
-                    console.error("User not found!")
-                    this.setState({ error: "User not found!" });
-                }
-            })
-
-            .catch(error => {
-                console.error(error)
-                this.setState({ error })
-            })
+            console.log(order);
+        }
     }
 
-    showerror = () => {
-        if (this.state.error != null) {
-            return (<p>{this.state.error}</p>);
-        }
+
+    handleShopSelect = (e) => {
+        console.log("Selected shop", e.target.value);
+        const shopSel = e.target.value;
+        this.setState({ selectedshop: shopSel });
+    }
+
+
+    componentDidMount() {
+        this.fetchshops();
+        console.log(this.state.shops)
     }
 
     render() {
         return (
-            <div className="column center">
-                <div className="linear-dark">
-                    <div className="row center">
-                        <div className="col-1">
-                            {this.renderRedirect()}
-                            <h1>Create New Order</h1>
-                            <form onSubmit={this.handleSubmit} >
-                                {getshops}
-                                <input type="Text" id="useremail" name="useremail" placeholder="Phone number" title="Enter Phone Number" required /><br />
-                                <button id="btnSubmit" className="blue" type="submit">Submit</button>
-                            </form>
-                            {this.showerror()}
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <form onSubmit={this.handleSubmit} >
+                <select
+                    name="Countries"
+                    onChange={e => this.handleShopSelect(e)}
+                    value={this.state.selectedshop}
+                >
+                    <option value="">Select the country</option>
+                    {this.state.shops.map((shop, key) => (
+                        <option key={key} value={shop.name}>
+                            {shop.name}
+                        </option>
+                    ))}
+                </select>
+                <br />
+                <textarea type="text" id="orderbox" name="orderbox" placeholder="Order" title="Enter Order Information" rows="5" cols="60" required /><br />
+                <button id="btnRegisterSubmit" className="blue" type="submit">Register</button>
+            </form>
         )
     }
 }

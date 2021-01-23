@@ -96,7 +96,7 @@ export default class SignIn extends Component {
     render() {
         return (
             <div className="column center">
-                <div className="linear-dark">
+                <div className="white">
                     <div className="row center">
                         <div className="col-1">
                 {this.renderRedirect()}
@@ -104,7 +104,7 @@ export default class SignIn extends Component {
                 <form onSubmit={this.handleSubmit} >
                     <input type="Text" id="useremail" name="useremail" placeholder="Phone number" title="Enter Phone Number" required /><br />
                     <input type="Password" id="userpassword" name="userpassword" placeholder="PIN number" title="Enter Pin Number" required /><br />
-                    <button id="btnLoginSubmit" className="blue" type="submit">Sign In</button>
+                    <button id="btnLoginSubmit" className="black" type="submit">Sign In</button>
                 </form>
                 {this.showerror()}
                 <a href="/SignUp"> Don't have an account? Register</a>
