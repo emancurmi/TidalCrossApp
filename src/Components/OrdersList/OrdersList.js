@@ -72,15 +72,9 @@ export default class OrderList extends Component {
     componentDidMount() {
         this.fetchorders();
     }
-
-    render() {
-        return (
-            
-            <div className="white">
-                <div className="column center">
-                    <div className="row center">
-                        <div className="col-1">
-                            {this.state.orders.map(order => {
+    
+    order = () => {
+    this.state.orders.map(order => {
                                 return (
                                     <div className="row center">
                                         <div className="col-2">
@@ -92,6 +86,15 @@ export default class OrderList extends Component {
                                     </div>
                                 )
                             })}
+
+    render() {
+        return (
+            
+            <div className="white">
+                <div className="column center">
+                    <div className="row center">
+                        <div className="col-1">
+                            
                         </div>
                     </div>
 
