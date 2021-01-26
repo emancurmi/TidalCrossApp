@@ -4,9 +4,19 @@ import { Redirect } from 'react-router-dom';
 import config from '../../config';
 
 export default class SignOut extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            updatesstate : ''
+        }
+    }
+    
 
     componentDidMount() {
-        this.props.handleLogOut();
+        this.setState({
+            updatestate: 'update'
+        });
     }
 
     render() {

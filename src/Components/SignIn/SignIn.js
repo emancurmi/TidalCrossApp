@@ -13,9 +13,10 @@ export default class SignIn extends Component {
         this.state = {
             config: config,
             userid: '',
-            userphone: '',
-            userpin: '',
+            useremail: '',
+            userpassword: '',
             username: '',
+            userrole: '',
             error: null,
             isLoading: true,
         }
@@ -26,12 +27,10 @@ export default class SignIn extends Component {
             userid: user[0].userid,
             useremail: user[0].useremail,
             userpassword: user[0].userpassword,
-            userphone: user[0].userphone,
             error: null,
             isLoading: false,
         })
         bake_cookie(config.cookie_key, engine.encrypt(this.state.userid.toString()));
-        this.props.handleLogIn();
         this.renderRedirect();
     }
 
@@ -45,16 +44,16 @@ export default class SignIn extends Component {
 
         e.preventDefault();
 
-        const { userphone, userpin } = e.target;
+        const { useremail, userpassword } = e.target;
 
         const user = {
-            userphone: userphone.value,
-            userpin: userpin.value
+            useremail: useremail.value,
+            userpassword: userpassword.value
         }
 
         this.setState({ error: null })
 
-        fetch(this.state.config.API_ENDPOINT + 'user/?useremail=' + user.userphone + '&userpin=' + user.userpin, {
+        fetch(this.state.config.API_ENDPOINT + 'user/?useremail=' + user.useremail, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
@@ -69,11 +68,15 @@ export default class SignIn extends Component {
             })
 
             .then(data => {
-                console.log(data.length);
                 if (data.length !== 0) {
-                    userphone.value = '';
-                    userpin.value = '';
-                    this.setUser(data);
+                    if (data[0].userpassword === userpassword.value) {
+                        useremail.value = '';
+                        userpassword.value = '';
+                        this.setUser(data);
+                    }
+                    else {
+                        this.setState({ error: "User Information Incorrect" });
+                    }
                 }
                 else {
                     console.error("User not found!")
@@ -102,8 +105,8 @@ export default class SignIn extends Component {
                 {this.renderRedirect()}
                 <h1>Login</h1>
                 <form onSubmit={this.handleSubmit} >
-                    <input type="Text" id="useremail" name="useremail" placeholder="Phone number" title="Enter Phone Number" required /><br />
-                    <input type="Password" id="userpassword" name="userpassword" placeholder="PIN number" title="Enter Pin Number" required /><br />
+                    <input type="Text" id="useremail" name="useremail" placeholder="Email Address" title="Enter Phone Number" required /><br />
+                    <input type="Password" id="userpassword" name="userpassword" placeholder="Password" title="Enter Pin Number" required /><br />
                     <button id="btnLoginSubmit" className="black" type="submit">Sign In</button>
                 </form>
                 {this.showerror()}

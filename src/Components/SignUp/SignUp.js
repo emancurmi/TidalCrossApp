@@ -16,6 +16,7 @@ export default class SignUp extends Component {
             username:'',
             useremail:'',
             userpassword: '',
+            userrole: '',
             error: null,
             isLoading: true,
             redirect: false
@@ -27,11 +28,11 @@ export default class SignUp extends Component {
             userid: user.userid,
             username: user.username,
             useremail: user.email,
-            userpassword: user.userpin,
+            userpassword: user.userpassword,
+            userrole: 'member',
             redirect: true
         })
         bake_cookie(config.cookie_key, engine.encrypt(this.state.userid.toString()));
-        this.props.handleLogIn();
         this.renderRedirect();
     }
 
@@ -60,7 +61,6 @@ export default class SignUp extends Component {
             body: JSON.stringify(user),
             headers: {
                 'content-type': 'application/json',
-                'authorization': `bearer ${this.state.config.API_TOKEN}`
             }
         })
 
@@ -100,7 +100,7 @@ export default class SignUp extends Component {
                 <h1>Register</h1>
                 <form onSubmit={this.handleSubmit} >
                     <input type="text" id="regusername" name="regusername" placeholder="Name" pattern="[A-Za-z\s]+" title="User name should be made up of Capital and small letters Only" required /><br />
-                                <input type="email" id="reguseremail" name="reguseremail" placeholder="E-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" title="Enter email address" required /><br/>
+                                <input type="email" id="reguseremail" name="reguseremail" placeholder="E-mail" title="Enter email address" required /><br/>
                     <input type="password" id="reguserpassword" name="reguserpassword" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                         title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required /><br />
                     <button id="btnRegisterSubmit" className="black" type="submit">Register</button>

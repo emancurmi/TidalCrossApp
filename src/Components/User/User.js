@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-//import { Redirect } from 'react-router-dom'
-//import config from '../../config';
+import { Redirect } from 'react-router-dom'
+import config from '../../config';
 import Loader from '../Loader/Loader';
-//import { read_cookie } from 'sfcookies';
+import { read_cookie } from 'sfcookies';
 import CreateOrderForm from '../CreateOrderForm/CreateOrderForm';
+import engine from '../../engine';
 
 export default class User extends Component {
 
@@ -12,7 +13,7 @@ export default class User extends Component {
         super(props);
 
         this.state = {
-            //userid: engine.decrypt(read_cookie(config.cookie_key)),
+            userid: engine.decrypt(read_cookie(config.cookie_key)),
             error: null,
             isLoading: true,
             showModal: false
@@ -45,7 +46,6 @@ export default class User extends Component {
             return (
                 <div className="column center">
                     <h1>Welcome User</h1>
-                    <CreateOrderForm />
                 </div>
             )
         }
