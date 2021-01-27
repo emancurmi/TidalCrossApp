@@ -1,103 +1,115 @@
 import React, { Component } from 'react';
+import config from '../../config';
+import OrderListItem from '../OrderListItem/OrderListItem';
 
-
-export default class OrderList extends Component {
-
-    orders = [
-    { id: 1, userid: 1, order: 'Malta', status: 'Completed', date: "2/1/2020", datecompleted: "5/1/2020" },
-    { id: 2, userid: 2, order: 'Aland Islands', stats: 'Pending', date: "2/1/2020", datecompleted: "" },
-    { id: 3, userid: 1, order: 'Albania', staus: 'Completed', date: "2/1/2020", datecompleted: "6/1/2020" }
-];
-
+export default class OrdersList extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            orders: [{
-                id: 0,
-                username: 0,
-                order: '',
-                status: '',
-                date: '',
-                datecompleted: '',
-            }],
+            orders: [],
             error: null,
             isLoading: true,
             showModal: false
         }
     }
 
-    fetchorders = () => {
-        let orderstostate = [];
-        this.orders.map(order => {
-            let x = { id: order.id, username: this.fetchuser(order.userid), order: order.order, status: order.status, date: order.date, datecompleted: order.datecompleted };
-            orderstostate = orderstostate + x;
-        })
-
+    setIsLoading = data => {
         this.setState({
-            orders: orderstostate
-        });
-
-    }
-
-    fetchuser = (userid) => {
-        let users = [{ id: 1, username: "Mike" }, { id: 2, username: "John" }, { id: 3, username: "Ryan" }]
-        let founduser = { id:0, username: "" };
-        users.map(user => {
-            if (user.id === userid) {
-                founduser.id = user.id;
-                founduser.username = user.username;
-            }
-            console.log(founduser);
-            return founduser;
+            isLoading: data
         })
-
     }
 
-    generateorderlist = () => {
-        if (this.state.orders.map !== 0) {
-            this.state.orders.map(order => {
-                return (
-                    <p>
-                        <a href={"/order/" + order.id} alt={order.id} className={order.status} key={order.id}> {order.userid + '-' + order.date} </a>
-                    </p>
-                )
+    setOrderData = data => {
+        this.setState({
+            orders: data
+        })
+    }
+
+    fetchordersbyuser = (userid) => {
+        this.setIsLoading(true);
+
+        fetch(config.API_ENDPOINT + 'order?userid=' + userid, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${config.API_TOKEN}`
+            }
+        })
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(error => Promise.reject(error))
+                }
+                return res.json()
             })
-        }
-        this.setState({ isLoading: false });
+            .then(data => {
+                this.setOrderData(data)
+            })
+            .catch(error => {
+                this.setState({ error })
+            })
+
+        this.setIsLoading(false);
     }
+
+    fetchordersbyshop = (shopid) => {
+        this.setIsLoading(true);
+
+        fetch(config.API_ENDPOINT + 'order?shopid=' + shopid, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${config.API_TOKEN}`
+            }
+        })
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(error => Promise.reject(error))
+                }
+                return res.json()
+            })
+            .then(data => {
+                this.setOrderData(data)
+            })
+            .catch(error => {
+                this.setState({ error })
+            })
+
+        this.setIsLoading(false);
+    }
+
 
 
     componentDidMount() {
-        this.fetchorders();
+        let userid = this.props.userid;
+        let shopid = this.props.shopid;
+        if (userid != null) { this.fetchordersbyuser(userid) }
+        if (shopid != null) { this.fetchordersbyshop(shopid) }
+
+        this.setState({ isLoading: false })
     }
-    
-    order = () => {
-    this.state.orders.map(order => {
-                                return (
-                                    <div className="row center">
-                                        <div className="col-2">
-                                            <a href={"/order/" + order.id} alt={order.id} className={order.status} key={order.id}> {order.username}  </a>
-                                        </div>
-                                        <div className="col-2">
-                                            {order.date}
-                                        </div>
-                                    </div>
-                                )
-                            })}
 
     render() {
         return (
-            
             <div className="white">
                 <div className="column center">
                     <div className="row center">
                         <div className="col-1">
-                            
+                            {this.state.orders.map(order => {
+                                if (this.props.userid != null) {
+                                    return (
+                                        <OrderListItem key={order.orderid} id={order.orderid} status={order.orderstatus} date={order.orderdate.split('T')[0]} user={order.ordershopid} />
+                                    )
+                                }
+                                else if (this.props.shopid != null) {
+                                    return (
+                                        <OrderListItem key={order.orderid} id={order.orderid} status={order.orderstatus} date={order.orderdate.split('T')[0]} user={order.orderuserid} />
+                                    )
+                                }
+                            })}
                         </div>
                     </div>
-
                 </div>
             </div>
         )

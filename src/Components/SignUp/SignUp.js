@@ -13,13 +13,13 @@ export default class SignUp extends Component {
         this.state = {
             config: config,
             userid: '',
-            username:'',
-            useremail:'',
+            username: '',
+            useremail: '',
+            userphone: '',
             userpassword: '',
             userrole: '',
             error: null,
             isLoading: true,
-            redirect: false
         }
     }
 
@@ -28,9 +28,9 @@ export default class SignUp extends Component {
             userid: user.userid,
             username: user.username,
             useremail: user.email,
+            userphone: user.phone,
             userpassword: user.userpassword,
-            userrole: 'member',
-            redirect: true
+            userrole: user.userrole,
         })
         bake_cookie(config.cookie_key, engine.encrypt(this.state.userid.toString()));
         this.renderRedirect();
@@ -39,19 +39,21 @@ export default class SignUp extends Component {
 
     renderRedirect = () => {
         if (read_cookie(config.cookie_key).length !== 0) {
-            return <Redirect to='/Dashboard/' showpopup='true' />
+            return <Redirect to='/dashboard/' />
         }
     }
 
     handleSubmit = e => {
         e.preventDefault();
 
-        const { regusername, reguseremail, reguserpassword } = e.target;
+        const { regusername, reguserphone, reguseremail, reguserpassword } = e.target;
 
         const user = {
             username: regusername.value,
-            useremail: reguseremail.value,
+            useremail: reguseremail.value.toLowerCase(),
+            userphone: reguserphone.value,
             userpassword: reguserpassword.value,
+            userrole: 'user'
         }
 
         this.setState({ error: null })
@@ -72,8 +74,10 @@ export default class SignUp extends Component {
             })
 
             .then(data => {
+                console.log(data);
                 regusername.value = '';
                 reguseremail.value = '';
+                reguserphone.value = '';
                 reguserpassword.value = '';
                 this.addUser(data);
             })
@@ -96,17 +100,18 @@ export default class SignUp extends Component {
                 <div className="white">
                     <div className="row center">
                         <div className="col-1">
-                {this.renderRedirect()}
-                <h1>Register</h1>
-                <form onSubmit={this.handleSubmit} >
-                    <input type="text" id="regusername" name="regusername" placeholder="Name" pattern="[A-Za-z\s]+" title="User name should be made up of Capital and small letters Only" required /><br />
-                                <input type="email" id="reguseremail" name="reguseremail" placeholder="E-mail" title="Enter email address" required /><br/>
-                    <input type="password" id="reguserpassword" name="reguserpassword" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required /><br />
-                    <button id="btnRegisterSubmit" className="black" type="submit">Register</button>
-                </form>
-                {this.showerror()}
-                <a href="/SignIn"> Already have an account? Sign In</a>
+                            {this.renderRedirect()}
+                            <h1>Register</h1>
+                            <form onSubmit={this.handleSubmit} >
+                                <input type="text" id="regusername" name="regusername" placeholder="Name" pattern="[A-Za-z\s]+" title="User name should be made up of Capital and small letters Only" required /><br />
+                                <input type="email" id="reguseremail" name="reguseremail" placeholder="E-mail" title="Enter email address" required /><br />
+                                <input type="phone" id="reguserphone" name="reguserphone" placeholder="Phone" title="Enter phone number" required /><br />
+                                <input type="password" id="reguserpassword" name="reguserpassword" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                    title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required /><br />
+                                <button id="btnRegisterSubmit" className="black" type="submit">Register</button>
+                            </form>
+                            {this.showerror()}
+                            <a href="/SignIn"> Already have an account? Sign In</a>
                         </div>
                     </div>
                 </div>

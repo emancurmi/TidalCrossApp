@@ -6,17 +6,6 @@ import config from '../../config';
 export default class SignOut extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            updatesstate : ''
-        }
-    }
-    
-
-    componentDidMount() {
-        this.setState({
-            updatestate: 'update'
-        });
     }
 
     render() {
@@ -25,10 +14,10 @@ export default class SignOut extends Component {
                 <div className="linear-dark">
                     <div className="row center">
                         <div className="col-1">
-                {
-                    delete_cookie(config.cookie_key)
-                }
-                <Redirect to='/' />
+                            {
+                                delete_cookie(config.cookie_key)
+                            }
+                            <Redirect to='/' />
                         </div>
                     </div>
                 </div>

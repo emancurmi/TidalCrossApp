@@ -19,6 +19,7 @@ export default class SignIn extends Component {
             userrole: '',
             error: null,
             isLoading: true,
+            redirect: false
         }
     }
 
@@ -29,9 +30,9 @@ export default class SignIn extends Component {
             userpassword: user[0].userpassword,
             error: null,
             isLoading: false,
+            redirect: true
         })
         bake_cookie(config.cookie_key, engine.encrypt(this.state.userid.toString()));
-        this.renderRedirect();
     }
 
     renderRedirect = () => {
@@ -47,7 +48,7 @@ export default class SignIn extends Component {
         const { useremail, userpassword } = e.target;
 
         const user = {
-            useremail: useremail.value,
+            useremail: useremail.value.toLowerCase(),
             userpassword: userpassword.value
         }
 
@@ -96,21 +97,26 @@ export default class SignIn extends Component {
         }
     }
 
+    componentDidMount() {
+        this.renderRedirect();
+    }
+
     render() {
         return (
             <div className="column center">
                 <div className="white">
                     <div className="row center">
                         <div className="col-1">
-                {this.renderRedirect()}
-                <h1>Login</h1>
-                <form onSubmit={this.handleSubmit} >
-                    <input type="Text" id="useremail" name="useremail" placeholder="Email Address" title="Enter Phone Number" required /><br />
-                    <input type="Password" id="userpassword" name="userpassword" placeholder="Password" title="Enter Pin Number" required /><br />
-                    <button id="btnLoginSubmit" className="black" type="submit">Sign In</button>
-                </form>
-                {this.showerror()}
-                <a href="/SignUp"> Don't have an account? Register</a>
+
+                            <h1>Login</h1>
+                            <form onSubmit={this.handleSubmit} >
+                                <input type="Text" id="useremail" name="useremail" placeholder="Email Address" title="Enter Phone Number" required /><br />
+                                <input type="Password" id="userpassword" name="userpassword" placeholder="Password" title="Enter Pin Number" required /><br />
+                                <button id="btnLoginSubmit" className="black" type="submit">Sign In</button>
+                            </form>
+                            {this.showerror()}
+                            {this.renderRedirect()}
+                            <a href="/SignUp"> Don't have an account? Register</a>
                         </div>
                     </div>
                 </div>

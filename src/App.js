@@ -13,6 +13,8 @@ import Profile from './Components/Profile/Profile';
 import Dashboard from './Components/Dashboard/Dashboard';
 //import NotFoundPage from './Components/NotFoundPage/NotFoundPage';
 
+import Order from './Components/Order/Order';
+
 class App extends Component {
     state = {
         isLoggedin: false
@@ -37,19 +39,21 @@ class App extends Component {
                 <Nav />
                 <div className='App'>
 
-                        <Route path="/" component={Home} exact />
+                    <Route path="/" component={Home} exact />
 
-                        <Route path="/signin" component={SignIn} exact />
-    
-                        <Route path="/signup" component={SignUp} exact />
+                    <Route path="/signin" component={SignIn} exact />
 
-                        <Route path="/signout" component={SignOut} exact />
+                    <Route path="/signup" component={SignUp} exact />
 
-                        <Route path="/profile" component={Profile} exact />
+                    <Route path="/signout" component={SignOut} exact />
 
-                        <Route path="/dashboard" component={Dashboard} exact />
+                    <Route path="/profile" component={Profile} exact />
 
-                        
+                    <Route path="/dashboard" component={Dashboard} exact />
+
+                    <Route path="/order" component={Order} exact />
+
+
 
                 </div>
                 <Footer />

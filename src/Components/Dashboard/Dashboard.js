@@ -6,7 +6,7 @@ import User from '../User/User';
 import Member from '../Member/Member';
 import Admin from '../Admin/Admin';
 import { read_cookie } from 'sfcookies';
-
+import Loader from '../Loader/Loader';
 
 
 export default class Dashboard extends Component {
@@ -26,6 +26,12 @@ export default class Dashboard extends Component {
         }
     }
 
+    setIsLoading = data => {
+        this.setState({
+            isLoading: data
+        })
+    }
+
     renderRedirect = () => {
         if (read_cookie(config.cookie_key).length === 0) {
             return <Redirect to='/SignIn/' />
@@ -33,8 +39,7 @@ export default class Dashboard extends Component {
     }
 
     loaduser = () => {
-        console.log(this.state.user.userid);
-        fetch(this.state.config.API_ENDPOINT + 'user/' + this.state.user.userid , {
+        fetch(this.state.config.API_ENDPOINT + 'user/' + this.state.user.userid, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
@@ -52,12 +57,9 @@ export default class Dashboard extends Component {
                 if (data.length !== 0) {
                     this.setState({
                         user: {
-                            userrole: data[0].userrole
+                            userrole: data.userrole
                         }
                     })
-                }
-                else {
-                    this.setState({ error: "User not found!" });
                 }
             })
 
@@ -65,12 +67,13 @@ export default class Dashboard extends Component {
                 console.error(error)
                 this.setState({ error })
             })
+        this.setIsLoading(false);
     }
+
     renderui = () => {
-        this.renderRedirect();
-        this.loaduser();
+
         if (this.state.user.userrole === "user") {
-            return (<User />);
+            return (<p>User</p>);
         }
         else if (this.state.user.userrole === "member") {
             return (<Member />);
@@ -80,9 +83,28 @@ export default class Dashboard extends Component {
         }
     }
 
+    componentDidMount() {
+        this.renderRedirect();
+        this.loaduser();
+    }
+
     render() {
-        return (
-            this.renderui()
-        )
+        if (this.state.isLoading | this.state.user.userrole === "") {
+            return (
+                <Loader loadingtype={""} />
+            );
+        }
+        else {
+
+            if (this.state.user.userrole === "user") {
+                return (<User />);
+            }
+            else if (this.state.user.userrole === "member") {
+                return (<Member />);
+            }
+            else if (this.state.user.userrole === "admin") {
+                return (<Admin />);
+            }
+        }
     }
 }

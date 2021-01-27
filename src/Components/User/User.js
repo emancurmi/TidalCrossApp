@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
 import config from '../../config';
 import Loader from '../Loader/Loader';
 import { read_cookie } from 'sfcookies';
 import CreateOrderForm from '../CreateOrderForm/CreateOrderForm';
 import engine from '../../engine';
+import OrdersList from '../OrdersList/OrdersList';
 
 export default class User extends Component {
 
@@ -44,8 +44,24 @@ export default class User extends Component {
         }
         else {
             return (
-                <div className="column center">
-                    <h1>Welcome User</h1>
+                <div className="light">
+                    <div className="column content">
+                        <div className="row center">
+                            <div className="col-1">
+                                <h1>Welcome User</h1>
+                            </div>
+                        </div>
+                        <div className="row content">
+                            <div className="col-2">
+                                <h3>Current Orders</h3>
+                                <OrdersList userid={this.state.userid} />
+                            </div>
+                            <div className="col-2">
+                                <h3>Create New Order</h3>
+                                <CreateOrderForm />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             )
         }

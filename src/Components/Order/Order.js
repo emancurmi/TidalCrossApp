@@ -1,23 +1,19 @@
+import React, { Component } from 'react';
+import { useLocation } from "react-router-dom";
+import config from '../../config';
+import Loader from '../Loader/Loader';
+
 export default class OrderList extends Component {
+
+
     constructor(props) {
+
         super(props);
 
         this.state = {
-            order: {
-                id: 0,
-                userid: 0,
-                order: '',
-                status: '',
-                date: '',
-                datecompleted: '',
-            },
+            order: this.props.order,
 
-            user: {
-                userid: '',
-                name: '',
-                email: '',
-                phone:'',
-            },
+            user: this.props.user,
 
             error: null,
             isLoading: true,
@@ -25,66 +21,79 @@ export default class OrderList extends Component {
         }
     }
 
-    fetchorder = (orderid) => {
+    setIsLoading = data => {
         this.setState({
-            orders: [
-                { id: 1, userid: 1, order: 'Malta', status: 'Completed', date: "2/1/2020", datecompleted: "5/1/2020" },
-                { id: 2, userid: 2, order: 'Aland Islands', stats: 'Pending', date: "2/1/2020", datecompleted: "" },
-                { id: 3, userid: 1, order: 'Albania', staus: 'Completed', date: "2/1/2020", datecompleted: "6/1/2020" }
-            ]
-        });
-    }
-
-    fetchuser = (userid) => {
-        let users = [{ id: 1, username: "Mike" }, { id: 2, username: "John" }, { id: 3, username: "Ryan" }]
-        let founduser = { id: 0, username: "" };
-        users.map(user => {
-            if (user.id === userid) {
-                console.log(user);
-                founduser.id = user.id;
-                founduser.username = user.username;
-            }
-            return founduser;
+            isLoading: data
         })
-
     }
-
-    generateorderlist = () => {
-        if (this.state.orders.map !== 0) {
-            this.state.orders.map(order => {
-                return (
-                    <p>
-                        <a href={"/order/" + order.id} alt={order.id} className={order.status} key={order.id}> {order.userid + '-' + order.date} </a>
-                    </p>
-                )
-            })
-        }
-        this.setState({ isLoading: false });
-    }
-
 
     componentDidMount() {
-        this.fetchorder()
-        while (this.state.order.userid !== '') {
-            this.fetchuser(this.state.order.userid)
-        }
+        this.setState({ isLoading: false })
     }
 
     render() {
-        return (
+        if (this.state.order !== undefined & this.state.user !== undefined) {
+            return (
 
-            <div className="white">
-                <div className="column center">
-                    <div className="row center">
-                        <div className="col-1">
-                            {this.state.order.id}
+                <div className="light">
+                    <div className="column content">
+                        <div className="row content">
+                            <div className="col-1">
+                                <h3>User Information</h3>
+                                <p>Name:{this.state.user.username}</p>
+                                <p>Email:{this.state.user.useremail}</p>
+                                <p>Phone:{this.state.user.userphone}</p>
+                            </div>
                         </div>
-                        <div className="col-1">
-                            {fetchuser(this.state.order.u}
+                        <div className="row content">
+                            <div className="col-1">
+                                <h3>Order Information</h3>
+                                <p>Order:{this.state.order.orderdata}</p>
+                                <p>Date:{this.state.order.orderdate}</p>
+                                <p>DateCompleted:{this.state.order.orderdatecompleted}</p>
+                            </div>
+                        </div>
+                        <div className="row content">
+                            <div className="col-1">
+                                <button id="btnBack" className="black" type="submit" onClick="">Back</button>
+                                <button id="btnMarkCompleted" className="black" type="submit" onClick="">Mark Completed</button>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
+        else {
+            return (
+                <div className="light">
+                    <div className="column content">
+                        <div className="row content">
+                            <div className="col-1">
+                                <h3>User Information</h3>
+                                <p>Name:</p>
+                                <p>Email:</p>
+                                <p>Phone:</p>
+                            </div>
+                        </div>
+                        <div className="row content">
+                            <div className="col-1">
+                                <h3>Order Information</h3>
+                                <p>Order:</p>
+                                <p>Date:</p>
+                                <p>DateCompleted:</p>
+                            </div>
+                        </div>
+                        <div className="row content">
+                            <div className="col-1">
+                                <button id="btnBack" className="black" type="submit">Back</button>
+                                <button id="btnMarkCompleted" className="black" type="submit">Mark Completed</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
     }
 }
