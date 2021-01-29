@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import config from '../../config';
 import engine from '../../engine';
 import { bake_cookie, read_cookie } from 'sfcookies';
+import crypto from 'crypto';
 
 export default class SignIn extends Component {
 
@@ -71,8 +72,14 @@ export default class SignIn extends Component {
             })
 
             .then(data => {
+                console.log(data);
                 if (data.length !== 0) {
-                    if (data[0].userpassword === userpassword.value) {
+                    let hexpassword = crypto.createHash('sha1').update(user.userpassword + data[0].userhex).digest('hex');
+                    console.log(user.userpassword)
+                    console.log(data[0].userhex)
+                    console.log(hexpassword)
+
+                    if (data[0].userhexpassword === hexpassword) {
                         useremail.value = '';
                         userpassword.value = '';
                         this.setUser(data);
