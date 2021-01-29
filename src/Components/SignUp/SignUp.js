@@ -51,7 +51,7 @@ export default class SignUp extends Component {
         const user = {
             username: regusername.value,
             useremail: reguseremail.value.toLowerCase(),
-            userphone: 21000000,
+            userphone: reguserphone.value,
             userpassword: reguserpassword.value,
             userrole: 'user'
         }

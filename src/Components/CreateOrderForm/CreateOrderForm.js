@@ -3,7 +3,6 @@ import config from '../../config';
 import engine from '../../engine';
 import { read_cookie } from 'sfcookies';
 import Loader from '../Loader/Loader';
-import moment from 'moment';
 
 export default class CreateOrderForm extends Component {
     constructor(props) {
@@ -69,7 +68,7 @@ export default class CreateOrderForm extends Component {
             orderuserid: parseInt(this.state.userid),
             orderdata: orderbox.value,
             orderstatus: "Pending",
-            orderdate: moment().format('YYYY-MM-DD HH:mm:ss'),
+            orderdate: new Date().toLocaleString('YYYY-MM-DD HH:mm:ss'),
             orderdatecompleted: null
         }
 
