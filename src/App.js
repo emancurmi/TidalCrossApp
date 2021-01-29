@@ -12,7 +12,7 @@ import SignOut from './Components/SignOut/SignOut';
 import Profile from './Components/Profile/Profile';
 import Dashboard from './Components/Dashboard/Dashboard';
 //import NotFoundPage from './Components/NotFoundPage/NotFoundPage';
-
+//<Route path="/signin" component={SignIn} exact />
 import Order from './Components/Order/Order';
 
 class App extends Component {
@@ -39,19 +39,25 @@ class App extends Component {
                 <Nav />
                 <div className='App'>
 
-                    <Route path="/" component={Home} exact />
+                    <Route exact path="/" component={Home} />
 
-                    <Route path="/signin" component={SignIn} exact />
+                    <Route path="/signin" exact render={(routeProps) => {
+                        return <SignIn handleLogIn={this.handleLogIn} {...routeProps} />
+                    }} />
 
-                    <Route path="/signup" component={SignUp} exact />
+                    <Route exact path="/signup" exact render={(routeProps) => {
+                        return <SignUp handleLogIn={this.handleLogIn} {...routeProps} />
+                    }} /> 
 
-                    <Route path="/signout" component={SignOut} exact />
+                    <Route path="/signout" exact render={(routeProps) => {
+                        return <SignOut handleLogOut={this.handleLogOut} {...routeProps} />
+                    }} />
 
-                    <Route path="/profile" component={Profile} exact />
+                    <Route exact path="/profile" component={Profile} />
 
-                    <Route path="/dashboard" component={Dashboard} exact />
+                    <Route exact path="/dashboard" component={Dashboard} />
 
-                    <Route path="/order" component={Order} exact />
+                    <Route exact path="/order" component={Order} />
 
 
 
@@ -61,7 +67,7 @@ class App extends Component {
 
         );
     }
-
+    
 
 }
 

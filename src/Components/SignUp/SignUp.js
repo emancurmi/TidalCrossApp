@@ -33,7 +33,8 @@ export default class SignUp extends Component {
             userrole: user.userrole,
         })
         bake_cookie(config.cookie_key, engine.encrypt(this.state.userid.toString()));
-        this.renderRedirect();
+        this.props.handleLogIn();
+        this.renderRedirect()
     }
 
 

@@ -33,6 +33,8 @@ export default class SignIn extends Component {
             redirect: true
         })
         bake_cookie(config.cookie_key, engine.encrypt(this.state.userid.toString()));
+        this.props.handleLogIn();
+        this.renderRedirect()
     }
 
     renderRedirect = () => {
