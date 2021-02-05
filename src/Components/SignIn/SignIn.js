@@ -76,6 +76,7 @@ export default class SignIn extends Component {
                 if (data.length !== 0) {
                     let hexpassword = crypto.createHash('sha1').update(user.userpassword + config.API_SECURITY + data[0].userhex).digest('hex');
                     console.log(user.userpassword)
+                    console.log(config.API_SECURITY)
                     console.log(data[0].userhex)
                     console.log(hexpassword)
 
