@@ -52,7 +52,6 @@ export default class OrderList extends Component {
         this.setState({
             order: data
         })
-        console.log(this.state.order)
         this.fetchuser(this.state.order.orderuserid);
     }
 

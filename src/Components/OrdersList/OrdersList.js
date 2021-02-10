@@ -11,7 +11,7 @@ export default class OrdersList extends Component {
             orders: [],
             error: null,
             isLoading: true,
-            showModal: false
+            showModal: false,
         }
     }
 
@@ -79,17 +79,28 @@ export default class OrdersList extends Component {
         this.setIsLoading(false);
     }
 
+    tick() {
+        let userid = this.props.userid;
+        let shopid = this.props.shopid;
+        if (userid != null) { this.fetchordersbyuser(userid) }
+        if (shopid != null) { this.fetchordersbyshop(shopid) }
+    }
 
 
     componentDidMount() {
         let userid = this.props.userid;
         let shopid = this.props.shopid;
-        console.log(userid)
-        console.log(shopid)
         if (userid != null) { this.fetchordersbyuser(userid) }
-
         if (shopid != null) { this.fetchordersbyshop(shopid) }
-        this.setState({ isLoading: false })
+
+        this.timerID = setInterval(
+            () => this.tick(),
+            60000
+        );
+    }
+
+    componentWillMount() {
+        clearInterval(this.timerID);
     }
 
     render() {

@@ -3,6 +3,8 @@ import config from '../../config';
 import engine from '../../engine';
 import { read_cookie } from 'sfcookies';
 import Loader from '../Loader/Loader';
+import Modal from '../Modal/Modal';
+
 
 export default class CreateOrderForm extends Component {
     constructor(props) {
@@ -20,6 +22,12 @@ export default class CreateOrderForm extends Component {
             isLoading: true,
             showModal: false
         }
+    }
+
+    toggleModal = () => {
+        this.setState({
+            showModal: !this.state.showModal
+        });
     }
 
     setIsLoading = data => {
@@ -67,9 +75,6 @@ export default class CreateOrderForm extends Component {
             ordershopid: this.state.selectedshop.shopid,
             orderuserid: parseInt(this.state.userid),
             orderdata: orderbox.value,
-            orderstatus: "Pending",
-            orderdate: new Date().toLocaleString('YYYY-MM-DD HH:mm:ss'),
-            orderdatecompleted: null
         }
 
         if (order.ordershopid === 0) {
@@ -92,6 +97,10 @@ export default class CreateOrderForm extends Component {
                     }
                     return res.json();
                 })
+
+                .then(
+                    this.toggleModal.bind(this)
+                )
 
                 .catch(error => {
                     this.setState({ error })
@@ -128,23 +137,33 @@ export default class CreateOrderForm extends Component {
         }
         else {
             return (
-                <form onSubmit={this.handleSubmit} >
-                    <select
-                        name="Countries"
-                        onChange={e => this.handleShopSelect(e)}
-                        value={this.state.selectedshop.shopname}
-                    >
-                        <option value="">Select the Shop</option>
-                        {this.state.shops.map((shop, key) => (
-                            <option key={key} value={shop.username}>
-                                {shop.username}
-                            </option>
-                        ))}
-                    </select>
-                    <br />
-                    <textarea type="text" id="orderbox" name="orderbox" placeholder="Order" title="Enter Order Information" rows="5" cols="60" required /><br />
-                    <button id="btnOrderSubmit" className="blue" type="submit">Make Order</button>
-                </form>
+                <div>
+                    <form onSubmit={this.handleSubmit} >
+                        <select
+                            name="Countries"
+                            onChange={e => this.handleShopSelect(e)}
+                            value={this.state.selectedshop.shopname}
+                        >
+                            <option value="">Select the Shop</option>
+                            {this.state.shops.map((shop, key) => (
+                                <option key={key} value={shop.username}>
+                                    {shop.username}
+                                </option>
+                            ))}
+                        </select>
+                        <br />
+                        <textarea type="text" id="orderbox" name="orderbox" placeholder="Order" title="Enter Order Information" rows="5" cols="60" required /><br />
+                        <button id="btnOrderSubmit" className="black" type="submit">Make Order</button>
+                    </form>
+                    {
+                        this.state.showModal ?
+                            <Modal
+                                text='Order Submited...wait a few minutes for the order to get to the shop. It will show in the orderlist when done'
+                                closeModal={this.toggleModal.bind(this)}
+                            />
+                            : null
+                    }
+                </div>
             )
         }
     }

@@ -49,10 +49,10 @@ export default class SignUp extends Component {
 
         const { regusername, reguserphone, reguseremail, reguserpassword, regisshop } = e.target;
 
-        let selectedrole = 'user'
+        let selectedrole = "user"
 
         if (regisshop.checked === true) {
-            selectedrole = 'member';
+            selectedrole = "member";
         }
 
         console.log(selectedrole);

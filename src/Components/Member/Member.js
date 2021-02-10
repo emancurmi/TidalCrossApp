@@ -31,17 +31,6 @@ export default class Member extends Component {
         }
     }
 
-    //generateorderinfo = () => {
-    //    if (this.state.order !== undefined) {
-    //        return (
-    //            <div className="col-2">
-    //                <h3>Order</h3>
-    //                <Order order={this.state.order} user={this.state.user} />
-    //            </div>
-    //        )
-    //    }
-    //}
-
     componentDidMount() {
         this.setIsLoading();
     }
