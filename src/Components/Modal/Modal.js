@@ -7,7 +7,7 @@ class Modal extends React.Component {
             <div className='modal'>
                 <div className='modal_inner'>
                     <h1>{this.props.text}</h1>
-                    <button onClick={this.props.closePopup}>close me</button>
+                    <button onClick={this.props.closeModal}>close me</button>
                 </div>
             </div>
         );

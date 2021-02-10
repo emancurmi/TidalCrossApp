@@ -75,7 +75,6 @@ export default class SignUp extends Component {
             })
 
             .then(data => {
-                console.log(data);
                 regusername.value = '';
                 reguseremail.value = '';
                 reguserphone.value = '';

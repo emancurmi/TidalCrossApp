@@ -86,7 +86,6 @@ export default class OrdersList extends Component {
         let shopid = this.props.shopid;
         if (userid != null) { this.fetchordersbyuser(userid) }
         if (shopid != null) { this.fetchordersbyshop(shopid) }
-
         this.setState({ isLoading: false })
     }
 

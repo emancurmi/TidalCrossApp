@@ -42,8 +42,28 @@ export default class Admin extends Component {
         }
         else {
             return (
-                <div className="column center">
-                    <h1>Welcome Admin</h1>
+                <div className="light">
+                    <div className="column content">
+                        <div className="row center">
+                            <div className="col-1">
+                                <h1>Welcome Admin</h1>
+                            </div>
+                        </div>
+                        <div className="row content">
+                            <div className="col-3">
+                                <h3>Members</h3>
+                                
+                            </div>
+                            <div className="col-3">
+                                <h3>Shops</h3>
+
+                            </div>
+                            <div className="col-3">
+                                <h3>Orders</h3>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             )
         }

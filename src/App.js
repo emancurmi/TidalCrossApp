@@ -53,6 +53,8 @@ class App extends Component {
                         return <SignOut handleLogOut={this.handleLogOut} {...routeProps} />
                     }} />
 
+                    <Route exact path="/order/:orderid" component={Order} />
+
                     <Route exact path="/profile" component={Profile} />
 
                     <Route exact path="/dashboard" component={Dashboard} />
