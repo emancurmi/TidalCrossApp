@@ -53,7 +53,7 @@ export default class OrderListItem extends Component {
 
         return (
             <p>
-                <a href={"order/"+ this.state.id} className={this.state.status}>{this.state.id} - {this.state.user} - {this.state.date}</a>
+                <a href={"/order/"+ this.state.id} className={this.state.status}>{this.state.id} - {this.state.user} - {this.state.date}</a>
             </p>
         )
     }

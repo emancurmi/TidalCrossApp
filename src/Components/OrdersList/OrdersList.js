@@ -84,7 +84,10 @@ export default class OrdersList extends Component {
     componentDidMount() {
         let userid = this.props.userid;
         let shopid = this.props.shopid;
+        console.log(userid)
+        console.log(shopid)
         if (userid != null) { this.fetchordersbyuser(userid) }
+
         if (shopid != null) { this.fetchordersbyshop(shopid) }
         this.setState({ isLoading: false })
     }

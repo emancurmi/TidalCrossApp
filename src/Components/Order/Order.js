@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import config from '../../config';
 import Loader from '../Loader/Loader';
 import { Redirect } from 'react-router-dom';
+import engine from '../../engine';
+import { read_cookie } from 'sfcookies';
 import Modal from '../Modal/Modal';
 
 export default class OrderList extends Component {
@@ -14,6 +16,8 @@ export default class OrderList extends Component {
         this.state = {
             order: this.fetchorder(this.props.match.params.orderid),
             user: {},
+            userid: engine.decrypt(read_cookie(config.cookie_key)),
+            currentuser: {},
             error: null,
             isLoading: true,
             showModal: false
@@ -35,6 +39,12 @@ export default class OrderList extends Component {
     setUserData = data => {
         this.setState({
             user: data
+        })
+    }
+
+    setCurrentUserData = data => {
+        this.setState({
+            currentuser: data
         })
     }
 
@@ -90,6 +100,28 @@ export default class OrderList extends Component {
             })
     }
 
+    fetchcurrentuser = (userid) => {
+        fetch(config.API_ENDPOINT + 'user/' + userid, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${config.API_TOKEN}`
+            }
+        })
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(error => Promise.reject(error))
+                }
+                return res.json()
+            })
+            .then(data => {
+                this.setCurrentUserData(data);
+            })
+            .catch(error => {
+                this.setState({ error })
+            })
+    }
+
     markcompleted = () => {
         this.setIsLoading(true);
 
@@ -124,12 +156,34 @@ export default class OrderList extends Component {
     }
 
     goback = () => {
-        console.log("goback");
-        return <Redirect to='/Dashboard/' />
+        this.props.history.push('/dashboard');
     }
 
-    componentDidMount() {
+    componentDidMount() {  
+        this.fetchcurrentuser(this.state.userid)
         this.setState({ isLoading: false })
+    }
+
+    showbuttons() {
+        if (this.state.currentuser.userrole === "Member" || this.state.currentuser.userrole === "Admin") {
+            return (
+                <div className="row content">
+                    <div className="col-1">
+                        <button id="btnBack" className="black" type="submit" onClick={this.goback}>Back</button>
+                        <button id="btnMarkCompleted" className="black" type="submit" onClick={this.markcompleted}>Mark Completed</button>
+                    </div>
+                </div>
+            )
+        }
+        else {
+            return (
+                <div className="row content">
+                    <div className="col-1">
+                        <button id="btnBack" className="black" type="submit" onClick={this.goback}>Back</button>
+                    </div>
+                </div>
+            )
+        }
     }
 
     render() {
@@ -160,12 +214,9 @@ export default class OrderList extends Component {
                                     <p>DateCompleted:{this.state.order.orderdatecompleted}</p>
                                 </div>
                             </div>
-                            <div className="row content">
-                                <div className="col-1">
-                                    <button id="btnBack" className="black" type="submit" onClick={this.goback}>Back</button>
-                                    <button id="btnMarkCompleted" className="black" type="submit" onClick={this.markcompleted}>Mark Completed</button>
-                                </div>
-                            </div>
+                            {
+                                this.showbuttons()
+                            }
                         </div>
                         {this.state.showModal ?
                             <Modal
@@ -197,11 +248,9 @@ export default class OrderList extends Component {
                                     <p>DateCompleted:</p>
                                 </div>
                             </div>
-                            <div className="row content">
-                                <div className="col-1">
-                                    <button id="btnBack" className="black" type="submit">Back</button>
-                                </div>
-                            </div>
+                            {
+                                this.showbuttons()
+                            }
                         </div>
                     </div>
                 )
