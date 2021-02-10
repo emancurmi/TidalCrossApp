@@ -47,45 +47,53 @@ export default class SignUp extends Component {
     handleSubmit = e => {
         e.preventDefault();
 
-        const { regusername, reguserphone, reguseremail, reguserpassword } = e.target;
+        const { regusername, reguserphone, reguseremail, reguserpassword, regisshop } = e.target;
 
-        const user = {
-            username: regusername.value,
-            useremail: reguseremail.value.toLowerCase(),
-            userphone: reguserphone.value,
-            userpassword: reguserpassword.value,
-            userrole: 'user'
+        let selectedrole = 'user'
+
+        if (regisshop.checked === true) {
+            selectedrole = 'member';
         }
 
-        this.setState({ error: null })
+        console.log(selectedrole);
 
-        fetch(this.state.config.API_ENDPOINT + 'user/', {
-            method: 'POST',
-            body: JSON.stringify(user),
-            headers: {
-                'content-type': 'application/json',
-            }
-        })
+        //const user = {
+        //    username: regusername.value,
+        //    useremail: reguseremail.value.toLowerCase(),
+        //    userphone: reguserphone.value,
+        //    userpassword: reguserpassword.value,
+        //    userrole: selectedrole
+        //}
 
-            .then(res => {
-                if (!res.ok) {
-                    return res.json().then(error => Promise.reject(error));
-                }
-                return res.json();
-            })
+        //this.setState({ error: null })
 
-            .then(data => {
-                regusername.value = '';
-                reguseremail.value = '';
-                reguserphone.value = '';
-                reguserpassword.value = '';
-                this.addUser(data);
-            })
+        //fetch(this.state.config.API_ENDPOINT + 'user/', {
+        //    method: 'POST',
+        //    body: JSON.stringify(user),
+        //    headers: {
+        //        'content-type': 'application/json',
+        //    }
+        //})
 
-            .catch(error => {
-                console.error(error);
-                this.setState({ error })
-            })
+        //    .then(res => {
+        //        if (!res.ok) {
+        //            return res.json().then(error => Promise.reject(error));
+        //        }
+        //        return res.json();
+        //    })
+
+        //    .then(data => {
+        //        regusername.value = '';
+        //        reguseremail.value = '';
+        //        reguserphone.value = '';
+        //        reguserpassword.value = '';
+        //        this.addUser(data);
+        //    })
+
+        //    .catch(error => {
+        //        console.error(error);
+        //        this.setState({ error })
+        //    })
     }
 
     showerror = () => {
@@ -108,6 +116,7 @@ export default class SignUp extends Component {
                                 <input type="phone" id="reguserphone" name="reguserphone" placeholder="Phone" title="Enter phone number" required /><br />
                                 <input type="password" id="reguserpassword" name="reguserpassword" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required /><br />
+                                <input type="checkbox" id="regisshop" name="regisshop" value="member"/><label for="regisshop">Register as Shop</label><br/>
                                 <button id="btnRegisterSubmit" className="black" type="submit">Register</button>
                             </form>
                             {this.showerror()}
