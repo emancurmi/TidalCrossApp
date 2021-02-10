@@ -57,43 +57,43 @@ export default class SignUp extends Component {
 
         console.log(selectedrole);
 
-        //const user = {
-        //    username: regusername.value,
-        //    useremail: reguseremail.value.toLowerCase(),
-        //    userphone: reguserphone.value,
-        //    userpassword: reguserpassword.value,
-        //    userrole: selectedrole
-        //}
+        const user = {
+            username: regusername.value,
+            useremail: reguseremail.value.toLowerCase(),
+            userphone: reguserphone.value,
+            userpassword: reguserpassword.value,
+            userrole: selectedrole
+        }
 
-        //this.setState({ error: null })
+        this.setState({ error: null })
 
-        //fetch(this.state.config.API_ENDPOINT + 'user/', {
-        //    method: 'POST',
-        //    body: JSON.stringify(user),
-        //    headers: {
-        //        'content-type': 'application/json',
-        //    }
-        //})
+        fetch(this.state.config.API_ENDPOINT + 'user/', {
+            method: 'POST',
+            body: JSON.stringify(user),
+            headers: {
+                'content-type': 'application/json',
+            }
+        })
 
-        //    .then(res => {
-        //        if (!res.ok) {
-        //            return res.json().then(error => Promise.reject(error));
-        //        }
-        //        return res.json();
-        //    })
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(error => Promise.reject(error));
+                }
+                return res.json();
+            })
 
-        //    .then(data => {
-        //        regusername.value = '';
-        //        reguseremail.value = '';
-        //        reguserphone.value = '';
-        //        reguserpassword.value = '';
-        //        this.addUser(data);
-        //    })
+            .then(data => {
+                regusername.value = '';
+                reguseremail.value = '';
+                reguserphone.value = '';
+                reguserpassword.value = '';
+                this.addUser(data);
+            })
 
-        //    .catch(error => {
-        //        console.error(error);
-        //        this.setState({ error })
-        //    })
+            .catch(error => {
+                console.error(error);
+                this.setState({ error })
+            })
     }
 
     showerror = () => {
