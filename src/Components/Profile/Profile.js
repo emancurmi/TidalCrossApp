@@ -47,7 +47,7 @@ export default class Profile extends Component {
         else {
             return (
                 <div className="column center">
-                    <h1>Welcome Member</h1>
+                    <h1>Profile Page</h1>
                 </div>
             )
         }

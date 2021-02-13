@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-
 import Header from './Components/Header/Header';
 import Nav from './Components/Nav/Nav';
 import Footer from './Components/Footer/Footer';
-
 import Home from './Components/Home/Home';
 import SignUp from './Components/SignUp/SignUp';
 import SignIn from './Components/SignIn/SignIn';
 import SignOut from './Components/SignOut/SignOut';
 import Profile from './Components/Profile/Profile';
 import Dashboard from './Components/Dashboard/Dashboard';
-//import NotFoundPage from './Components/NotFoundPage/NotFoundPage';
-//<Route path="/signin" component={SignIn} exact />
-import Order from './Components/Order/Order';
+import OrderDetails from './Components/OrderDetails/OrderDetails';
 
 class App extends Component {
     state = {
@@ -35,8 +31,9 @@ class App extends Component {
     render() {
         return (
             <BrowserRouter>
-                <Header />
                 <Nav />
+                <Header />
+
                 <div className='App'>
 
                     <Route exact path="/" component={Home} />
@@ -53,24 +50,17 @@ class App extends Component {
                         return <SignOut handleLogOut={this.handleLogOut} {...routeProps} />
                     }} />
 
-                    <Route exact path="/order/:orderid" component={Order} />
-
                     <Route exact path="/profile" component={Profile} />
 
                     <Route exact path="/dashboard" component={Dashboard} />
 
-                    <Route exact path="/order" component={Order} />
-
-
+                    <Route exact path="/orderdetails" component={OrderDetails} />
 
                 </div>
                 <Footer />
             </BrowserRouter>
-
         );
     }
-    
-
 }
 
 export default App;

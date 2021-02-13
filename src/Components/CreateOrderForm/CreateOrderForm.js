@@ -98,9 +98,9 @@ export default class CreateOrderForm extends Component {
                     return res.json();
                 })
 
-                .then(
-                    this.toggleModal.bind(this)
-                )
+                .then(data => {
+                    orderbox.value = "";
+                })
 
                 .catch(error => {
                     this.setState({ error })
@@ -137,32 +137,35 @@ export default class CreateOrderForm extends Component {
         }
         else {
             return (
-                <div>
-                    <form onSubmit={this.handleSubmit} >
-                        <select
-                            name="Countries"
-                            onChange={e => this.handleShopSelect(e)}
-                            value={this.state.selectedshop.shopname}
-                        >
-                            <option value="">Select the Shop</option>
-                            {this.state.shops.map((shop, key) => (
-                                <option key={key} value={shop.username}>
-                                    {shop.username}
-                                </option>
-                            ))}
-                        </select>
-                        <br />
-                        <textarea type="text" id="orderbox" name="orderbox" placeholder="Order" title="Enter Order Information" rows="5" cols="60" required /><br />
-                        <button id="btnOrderSubmit" className="black" type="submit">Make Order</button>
-                    </form>
-                    {
-                        this.state.showModal ?
-                            <Modal
-                                text='Order Submited...wait a few minutes for the order to get to the shop. It will show in the orderlist when done'
-                                closeModal={this.toggleModal.bind(this)}
-                            />
-                            : null
-                    }
+
+                <div class="card">
+                    <div class="card-header header-elements-inline">
+                        <h5 class="card-title">Create new order</h5>
+                    </div>
+
+                    <div class="card-body">
+                        <form onSubmit={this.handleSubmit}>
+                            <div className="form-group">
+                                <select className="form-control" name="Countries" onChange={e => this.handleShopSelect(e)} value={this.state.selectedshop.shopname}>
+                                    <option value="">Select the Shop</option>
+                                    {this.state.shops.map((shop, key) => (
+                                        <option key={key} value={shop.username}>
+                                            {shop.username}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+
+                            <div className="form-group">
+                                <label>Your Order:</label>
+                                <textarea id="orderbox" name="orderbox" rows="5" cols="5" className="form-control" placeholder="Enter your order here" required></textarea>
+                            </div>
+
+                            <div class="text-right">
+                                <button id="btnOrderSubmit" type="submit" className="btn btn-primary">Submit Order <i class="icon-paperplane ml-2"></i></button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             )
         }

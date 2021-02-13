@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 //import { withRouter } from 'react-router-dom';
-
 import './Home.css';
 
 export default class Home extends Component {
@@ -11,108 +10,23 @@ export default class Home extends Component {
 
     render() {
         return (
-            <div className="column center">
-                <div className="linear-dark">
-                    <div className="row center">
-                        <div className="col-2">
-                            <img alt="logo" src="logo.jpg"/>
-                        </div>
-                        <div className="col-2">
-                            <div className="column">
-                                <div className="col-1">
-                                    <h1>Our App</h1>
-                                    <div className="row center spacebetween">
-                                        <button className="clear">About Us</button>
-                                        <button className="blue" onClick={() => this.nextPath('/SignUp')}>Sign Up</button>
-                                    </div>
-                                </div>
+            <div className="page-content pt-0">
+                <div className="content-wrapper">
+                    <div className="content">
+                        <div className="card">
+                            <div className="card-header header-elements-inline">
+                                <h5 className="card-title">Welcome to Tidal Cross</h5>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="dark">
-                    <div className="row content">
-                        <div className="col-3">
-                            <h4>Our Idea</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                        </div>
-                        <div className="col-3">
-                            <h4>Statistics</h4>
-                            <h5>Downloaded: 200 Times<br/>Reviews: 4.5/5 Stars</h5>
-                        </div>
-                        <div className="col-3">
-                            <h4>Saved Button Clicked</h4>
-                            <h5>300</h5>
-                            <button className="blue">Sign Up</button>
-                        </div>
-                    </div>
-                </div>
-                <div className="breaker"></div>
-                <div className="light">
-                    <div className="column content">
-                        <div className="row center">
-                            <h1 className="col-1">Idea</h1>
-                            <h4 className="col-1">Why Choosing Our App?</h4>
-                        </div>
-                        <div className="row">
-                            <p className="col-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            <p className="col-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="dark">
-                    <div className="column content">
-                        <div className="row center">
-                            <h1 className="col-1">The Developer</h1>
-                            <h4 className="col-1">Experience & Know-How</h4>
-                        </div>
-                        <div className="row">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="breaker"></div>
-                <div className="light">
-                    <div className="column content">
-                        <div className="row center">
-                            <h1 className="col-1">Reviews</h1>
-                            <h4 className="col-1">Endorsments</h4>
-                        </div>
-                        <div className="row">
-                            <div className="col-6">
-                                <img src="placeholder.jpg" width="75" alt="company logo" />
+                            <div className="card-body">
+                                <h6 className="font-weight-semibold">Start your development with no hassle!</h6>
+                                <p className="mb-3">Common problem of templates is that all code is deeply integrated into the core. This limits your freedom in decreasing amount of code, i.e. it becomes pretty difficult to remove unnecessary code from the project. Limitless allows you to remove unnecessary and extra code easily just by removing the path to specific LESS file with component styling. All plugins and their options are also in separate files. Use only components you actually need!</p>
+
+                                <h6 className="font-weight-semibold">What is this?</h6>
+                                <p className="mb-3">Starter kit is a set of pages, useful for developers to start development process from scratch. Each layout includes base components only: layout, page kits, color system which is still optional, bootstrap files and bootstrap overrides. No extra CSS/JS files and markup. CSS files are compiled without any plugins or components. Starter kit was moved to a separate folder for better accessibility.</p>
+
+                                <h6 className="font-weight-semibold">How does it work?</h6>
+                                <p>You open one of the starter pages, add necessary plugins, uncomment paths to files in components.less file, compile new CSS. That's it. I'd also recommend to open one of main pages with functionality you need and copy all paths/JS code from there to your new page, it's just faster and easier.</p>
                             </div>
-                            <div className="col-6">
-                                <img src="placeholder.jpg" width="75" alt="company logo"/>
-                            </div>
-                            <div className="col-6">
-                                <img src="placeholder.jpg" width="75" alt="company logo"/>
-                            </div>
-                            <div className="col-6">
-                                <img src="placeholder.jpg" width="75" alt="company logo"/>
-                            </div>
-                            <div className="col-6">
-                                <img src="placeholder.jpg" width="75" alt="company logo"/>
-                            </div>
-                            <div className="col-6">
-                                <img src="placeholder.jpg" width="75" alt="company logo" />
-                            </div>
-                            </div>
-                        <div className="row">
-                            <p className="col-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            <p className="col-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="white">
-                    <div className="column content">
-                        <div className="row center">
-                            <h1 className="col-1">Download Now</h1>
-                            <h4 className="col-1">Join Us! Change The World</h4>
-                        </div>
-                        <div className="row">
-                            <p className="col-2">Guardian Ride is an app based on the requirement of the user knowing the driver in person or through a firend our drivers are not anyone of the street, our drivers are the ones you choose to pick you up.</p>
-                            <p className="col-2">As the app is still in its initial phases we still advise you to use responsibly and always check whos is the driving.</p>
                         </div>
                     </div>
                 </div>
