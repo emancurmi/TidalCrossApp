@@ -17,14 +17,7 @@ export default class OrderDetails extends Component {
             currentuser: {},
             error: null,
             isLoading: true,
-            showModal: false
         }
-    }
-
-    toggleModal = () => {
-        this.setState({
-            showModal: !this.state.showModal
-        });
     }
 
     setIsLoading = data => {
@@ -139,10 +132,6 @@ export default class OrderDetails extends Component {
             })
 
             .then(
-                this.toggleModal.bind(this)
-            )
-
-            .then(
                 this.setIsLoading(false)
             )
 
@@ -156,11 +145,12 @@ export default class OrderDetails extends Component {
     }
 
     showbuttons() {
-        if (this.state.currentuser.userrole === "Member" || this.state.currentuser.userrole === "Admin") {
+        console.log(this.state.currentuser);
+        if (this.state.currentuser.userrole === "member" || this.state.currentuser.userrole === "admin") {
             return (
                 <ul className="list-inline mb-0">
                     <li className="list-inline-item"><button type="button" class="btn btn-link" onClick={this.goback}><i class="icon-chevron-left mr-2"></i> Back</button></li>
-                    <li className="list-inline-item"><button type="button" class="btn btn-link" onClick={this.markcompleted}><i class="icon-ok mr-2"></i> Completed</button></li>
+                    <li className="list-inline-item"><button type="button" class="btn btn-success btn-sm" onClick={this.markcompleted}>Completed</button></li>
                 </ul>
             )
         }
@@ -250,7 +240,7 @@ export default class OrderDetails extends Component {
                                             <div className="header-elements"></div>
                                         </div>
                                         <div className="card-body">
-                                            <p className="card-text">We have encountered an error order can't be found  </p>
+                                            <p className="card-text">We have encountered an error order can't be found.</p>
                                         </div>
                                     </div>
                                 </div>

@@ -55,12 +55,12 @@ export default class Nav extends Component {
 	loadspan = () => {
 		if (read_cookie(config.cookie_key).length !== 0) {
 			return (
-				<span className="badge bg-success-400 ml-md-auto mr-md-3"><Link to="/dashboard">Dashboard</Link></span>
+				<Link to="/dashboard" className="badge bg-success-400 ml-md-auto mr-md-3">Dashboard</Link>
 			)
 		}
 		else {
 			return (
-				<span className="badge bg-success-400 ml-md-auto mr-md-3"><Link to="/SignIn">Log In</Link></span>
+				<Link to="/SignIn" className="badge bg-success-400 ml-md-auto mr-md-3">Log In</Link>
 			)
 		}
     }

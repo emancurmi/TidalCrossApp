@@ -12,7 +12,7 @@ export default class OrderListItem extends Component {
             status: this.props.status,
             date: this.props.date,
             user: this.fetchuser(this.props.user),
-            orderdata: this.props.orderdata.length >= 100 ? this.props.orderdata.substr(0, 100) + " Read More"  : this.props.orderdata
+            orderdata: (this.props.orderdata !== undefined) ? ((this.props.orderdata.length >= 100) ? this.props.orderdata.substr(0, 100) + " Read More" : this.props.orderdata) : ""
         }
     }
 

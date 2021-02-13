@@ -121,7 +121,7 @@ export default class OrdersList extends Component {
                             <tr className="table-active table-border-double">
                                 <td colSpan="3">Active tickets</td>
                                 <td className="text-right">
-                                    <span className="badge bg-blue badge-pill">{this.state.orders.length}</span>
+                                    <span className="badge bg-blue badge-pill">{this.state.orders !== undefined ? this.state.orders.length : 0}</span>
                                 </td>
                             </tr>
 
