@@ -151,15 +151,15 @@ export default class OrderDetails extends Component {
         if (this.state.currentuser.userrole === "member" || this.state.currentuser.userrole === "admin") {
             return (
                 <ul className="list-inline mb-0">
-                    <li className="list-inline-item"><button type="button" class="btn btn-link" onClick={this.goback}><i class="icon-chevron-left mr-2"></i> Back</button></li>
-                    <li className="list-inline-item"><button type="button" class="btn btn-success btn-sm" onClick={this.markcompleted}>Completed</button></li>
+                    <li className="list-inline-item"><button type="button" className="btn btn-link" onClick={this.goback}><i className="icon-chevron-left mr-2"></i> Back</button></li>
+                    <li className="list-inline-item"><button type="button" className="btn btn-success btn-sm" onClick={this.markcompleted}>Completed</button></li>
                 </ul>
             )
         }
         else {
             return (
                 <ul className="list-inline mb-0">
-                    <li className="list-inline-item"><button type="button" class="btn btn-link" onClick={this.goback}><i class="icon-chevron-left mr-2"></i> Back</button></li>
+                    <li className="list-inline-item"><button type="button" className="btn btn-link" onClick={this.goback}><i className="icon-chevron-left mr-2"></i> Back</button></li>
                 </ul>
             )
         }

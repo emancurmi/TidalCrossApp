@@ -99,7 +99,7 @@ export default class SignIn extends Component {
     showerror = () => {
         if (this.state.error != null) {
             return (
-                <div class="form-group text-center">
+                <div className="form-group text-center">
                     {this.state.error}
                 </div>
             );
@@ -113,61 +113,61 @@ export default class SignIn extends Component {
     render() {
         return (
 
-            <div class="page-content">
+            <div className="page-content">
 
-                <div class="content-wrapper">
+                <div className="content-wrapper">
 
-                    <div class="content d-flex justify-content-center align-items-center">
+                    <div className="content d-flex justify-content-center align-items-center">
 
-                        <form class="login-form" onSubmit={this.handleSubmit}>
-                            <div class="card mb-0">
-                                <div class="card-body">
-                                    <div class="text-center mb-3">
-                                        <i class="icon-reading icon-2x text-slate-300 border-slate-300 border-3 rounded-round p-3 mb-3 mt-1"></i>
-                                        <h5 class="mb-0">Login to your account</h5>
-                                        <span class="d-block text-muted">Your credentials</span>
+                        <form className="login-form" onSubmit={this.handleSubmit}>
+                            <div className="card mb-0">
+                                <div className="card-body">
+                                    <div className="text-center mb-3">
+                                        <i className="icon-reading icon-2x text-slate-300 border-slate-300 border-3 rounded-round p-3 mb-3 mt-1"></i>
+                                        <h5 className="mb-0">Login to your account</h5>
+                                        <span className="d-block text-muted">Your credentials</span>
                                     </div>
 
-                                    <div class="form-group form-group-feedback form-group-feedback-left">
-                                        <input type="text" class="form-control" placeholder="E-mail Address" id="useremail" name="useremail" required/>
-                                        <div class="form-control-feedback">
-                                            <i class="icon-user text-muted"></i>
+                                    <div className="form-group form-group-feedback form-group-feedback-left">
+                                        <input type="text" className="form-control" placeholder="E-mail Address" id="useremail" name="useremail" required/>
+                                        <div className="form-control-feedback">
+                                            <i className="icon-user text-muted"></i>
                                         </div>
                                     </div>
 
-                                    <div class="form-group form-group-feedback form-group-feedback-left">
-                                        <input type="password" class="form-control" placeholder="Password" id="userpassword" name="userpassword" required />
-                                        <div class="form-control-feedback">
-                                            <i class="icon-lock2 text-muted"></i>
+                                    <div className="form-group form-group-feedback form-group-feedback-left">
+                                        <input type="password" className="form-control" placeholder="Password" id="userpassword" name="userpassword" required />
+                                        <div className="form-control-feedback">
+                                            <i className="icon-lock2 text-muted"></i>
                                         </div>
                                     </div>
 
-                                    <div class="form-group d-flex align-items-center">
-                                        {/*<div class="form-check mb-0">
-                                            <label class="form-check-label">
-                                                <input type="checkbox" name="remember" class="form-input-styled" checked />
+                                    <div className="form-group d-flex align-items-center">
+                                        {/*<div className="form-check mb-0">
+                                            <label className="form-check-label">
+                                                <input type="checkbox" name="remember" className="form-input-styled" checked />
                                                             Remember
 									        </label>
                                         </div>*/}
 
-                                        <a href="login_password_recover.html" class="ml-auto">Forgot password?</a>
+                                        <a href="/Reset" className="ml-auto">Forgot password?</a>
                                     </div>
 
-                                    <div class="form-group">
-                                        <button type="submit" id="btnLoginSubmit" class="btn btn-primary btn-block">Sign in <i class="icon-circle-right2 ml-2"></i></button>
+                                    <div className="form-group">
+                                        <button type="submit" id="btnLoginSubmit" className="btn btn-primary btn-block">Sign in <i className="icon-circle-right2 ml-2"></i></button>
                                     </div>
 
                                     {this.showerror()}
 
-                                    <div class="form-group text-center text-muted content-divider">
-                                        <span class="px-2">Don't have an account?</span>
+                                    <div className="form-group text-center text-muted content-divider">
+                                        <span className="px-2">Don't have an account?</span>
                                     </div>
 
-                                    <div class="form-group">
-                                        <a href="/SignUp" class="btn btn-light btn-block">Sign up</a>
+                                    <div className="form-group">
+                                        <a href="/SignUp" className="btn btn-light btn-block">Sign up</a>
                                     </div>
 
-                                    <span class="form-text text-center text-muted">By continuing, you're confirming that you've read our <a href="#">Terms &amp; Conditions</a> and <a href="#">Cookie Policy</a></span>
+                                    <span className="form-text text-center text-muted">By continuing, you're confirming that you've read our <a href="#">Terms &amp; Conditions</a> and <a href="#">Cookie Policy</a></span>
                                 </div>
                             </div>
                         </form>

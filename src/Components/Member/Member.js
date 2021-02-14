@@ -44,10 +44,10 @@ export default class Member extends Component {
         }
         else {
             return (
-                <div class="content-wrapper">
-                    <div class="content">
-                        <div class="row">
-                            <div class="col-xl-12">
+                <div className="content-wrapper">
+                    <div className="content">
+                        <div className="row">
+                            <div className="col-xl-12">
                                 <OrdersList shopid={this.state.userid} />
                             </div>
                         </div>

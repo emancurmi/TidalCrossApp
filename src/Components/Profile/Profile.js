@@ -37,6 +37,8 @@ export default class Profile extends Component {
         }
     }
 
+
+
     render() {
         this.renderRedirect()
         if (this.state.isLoading) {

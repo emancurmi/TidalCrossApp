@@ -10,6 +10,7 @@ import SignOut from './Components/SignOut/SignOut';
 import Profile from './Components/Profile/Profile';
 import Dashboard from './Components/Dashboard/Dashboard';
 import OrderDetails from './Components/OrderDetails/OrderDetails';
+import Reset from './Components/Reset/Reset';
 
 class App extends Component {
     state = {
@@ -49,6 +50,8 @@ class App extends Component {
                     <Route path="/signout" exact render={(routeProps) => {
                         return <SignOut handleLogOut={this.handleLogOut} {...routeProps} />
                     }} />
+
+                    <Route exact path="/reset" component={Reset} />
 
                     <Route exact path="/profile" component={Profile} />
 
