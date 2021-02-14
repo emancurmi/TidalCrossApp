@@ -134,6 +134,9 @@ export default class OrderDetails extends Component {
             .then(
                 this.setIsLoading(false)
             )
+            .then(
+                this.goback()
+            )
 
             .catch(error => {
                 this.setState({ error })
@@ -145,7 +148,6 @@ export default class OrderDetails extends Component {
     }
 
     showbuttons() {
-        console.log(this.state.currentuser);
         if (this.state.currentuser.userrole === "member" || this.state.currentuser.userrole === "admin") {
             return (
                 <ul className="list-inline mb-0">
@@ -240,7 +242,7 @@ export default class OrderDetails extends Component {
                                             <div className="header-elements"></div>
                                         </div>
                                         <div className="card-body">
-                                            <p className="card-text">We have encountered an error order can't be found.</p>
+                                            <p className="card-text">We have encountered an error order can't be found. </p>
                                         </div>
                                     </div>
                                 </div>
