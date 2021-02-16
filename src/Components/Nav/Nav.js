@@ -99,10 +99,12 @@ export default class Nav extends Component {
 				</div>
 
 				<div className="d-md-none">
+					{/*
 					<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
 						<i className="icon-tree5"></i>
 					</button>
-					<button className="navbar-toggler sidebar-mobile-main-toggle" type="button">
+					*/}
+					<button className="navbar-toggler sidebar-mobile-main-toggle" type="button" data-toggle="collapse" data-target="#navbar-mobile">
 						<i className="icon-paragraph-justify3"></i>
 					</button>
 				</div>

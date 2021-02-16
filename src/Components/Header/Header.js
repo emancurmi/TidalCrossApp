@@ -41,17 +41,17 @@ export default class Header extends Component {
 						</div>
 					</div>
 				</div>
-
+				{/*
 				<div className="page-header-content header-elements-md-inline">
 
 					<div className="page-title d-flex">
 						<h4>
-							{/*<i className="icon-arrow-left52 mr-2"></i>*/}
+							<i className="icon-arrow-left52 mr-2"></i>
 							<span className="font-weight-semibold"> </span>
 						</h4>
 						<a href="#" className="header-elements-toggle text-default d-md-none"><i className="icon-more"></i></a>
 					</div>
-					{/*
+					
 					<div className="header-elements d-none mb-3 mb-md-0">
 						<div className="d-flex justify-content-center">
 							<a href="#" className="btn btn-link btn-float text-default"><i className="icon-bars-alt text-indigo-400"></i> <span>Statistics</span></a>
@@ -59,8 +59,9 @@ export default class Header extends Component {
 							<a href="#" className="btn btn-link btn-float text-default"><i className="icon-calendar5 text-indigo-400"></i> <span>Schedule</span></a>
 						</div>
 					</div>
-					*/}
+					
 				</div>
+				*/}
 			</div>
 
 		)
