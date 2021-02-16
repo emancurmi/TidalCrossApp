@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './Home.css';
 export default class Home extends Component {
 
     nextPath(path) {
@@ -12,29 +12,45 @@ export default class Home extends Component {
 				<div className="content-wrapper">
 					<div className="content">
 						{/*Cover Picture*/}
-						<div class="profile-cover">
-							<div class="profile-cover-img"></div>
-							<div class="media align-items-center text-center text-md-left flex-column flex-md-row m-0">
-								{/*<div class="mr-md-3 mb-2 mb-md-0">
-									<a href="#" class="profile-thumb">
-										<img src="../../../../global_assets/images/placeholders/placeholder.jpg" class="border-white rounded-circle" width="48" height="48" alt="" />
+						<div className="profile-cover">
+							<div className="profile-cover-img"></div>
+							<div className="media align-items-center text-center text-md-left flex-column flex-md-row m-0">
+								<div className="mr-md-3 mb-2 mb-md-0">
+									<a href="#" className="profile-thumb">
+										<img src="../../../../global_assets/images/placeholders/placeholder.jpg" className="border-white rounded-circle" width="48" height="48" alt="" />
 									</a>
-								</div>*/}
-
-								<div class="media-body text-white">
-									<h1 class="mb-0">Tidal Cross</h1>
-									<span class="d-block">Your Online Ordering System</span>
 								</div>
 
-								<div class="ml-md-3 mt-2 mt-md-0">
-									<ul class="list-inline list-inline-condensed mb-0">
-										<li class="list-inline-item"><a href="/login" class="btn btn-light border-transparent">Create an Account</a></li>
-										<li class="list-inline-item"><a href="/contact" class="btn btn-light border-transparent">Contact Us</a></li>
+								<div className="media-body text-white">
+									<h1 className="mb-0">Tidal Cross</h1>
+									<span className="d-block">Your Online Ordering System</span>
+								</div>
+
+								<div className="ml-md-3 mt-2 mt-md-0">
+									<ul className="list-inline list-inline-condensed mb-0">
+										<li className="list-inline-item"><a href="/signup" className="btn btn-light border-transparent">Get Started</a></li>
+										<li className="list-inline-item"><a href="/contact" className="btn btn-light border-transparent">Contact Us</a></li>
 									</ul>
 								</div>
 							</div>
 						</div>
 
+						{/*Customers*/}
+						{/*<div className="row">
+							<div className="col aos-init aos-animate" data-aos="fade-up" data-aos-delay="0">
+								<img src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="Image" className="img-fluid" />
+							</div>
+							<div className="col aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+								<img src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="Image" className="img-fluid" />
+							</div>
+							<div className="col aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+								<img src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="Image" className="img-fluid" />
+							</div>
+							<div className="col aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+								<img src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="Image" className="img-fluid" />
+							</div>
+						</div>
+						*/}
 						{/*Why Business Owner's Loves Tidal Cross*/}
 						<div className="card">
 							<div className="card-header header-elements-inline">
@@ -43,10 +59,10 @@ export default class Home extends Component {
 							<div className="card-body">
 
 
-								<div class="row">
-									<div class="col-lg-4">
-										<div class="card">
-											<div class="card-body text-center">
+								<div className="row">
+									<div className="col-lg-4">
+										<div className="card">
+											<div className="card-body text-center">
 												<h6 className="font-weight-semibold">Fully Functional</h6>
 												<p className="mb-3">Common problem of templates is that all code is deeply integrated into the core. This limits your freedom in decreasing amount of code, i.e. it becomes pretty difficult to remove unnecessary code from the project. Limitless allows you to remove unnecessary and extra code easily just by removing the path to specific LESS file with component styling. All plugins and their options are also in separate files. Use only components you actually need!</p>
 
@@ -60,25 +76,25 @@ export default class Home extends Component {
 										</div>
 									</div>
 
-									<div class="col-lg-4">
-										<div class="card">
-											<div class="card-body text-center">
-												<img class="card-img-top img-fluid" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="" />
-												<div class="card-img-actions-overlay card-img-top">
-													<a href="#" class="btn btn-outline btn-icon bg-white text-white border-white border-2 rounded-round">
-														<i class="icon-download4"></i>
+									<div className="col-lg-4">
+										<div className="card">
+											<div className="card-body text-center">
+												<img className="card-img-top img-fluid" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="" />
+												<div className="card-img-actions-overlay card-img-top">
+													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 rounded-round">
+														<i className="icon-download4"></i>
 													</a>
-													<a href="#" class="btn btn-outline btn-icon bg-white text-white border-white border-2 ml-2 rounded-round">
-														<i class="icon-link2"></i>
+													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 ml-2 rounded-round">
+														<i className="icon-link2"></i>
 													</a>
 												</div>
 											</div>
 										</div>
 									</div>
 
-									<div class="col-lg-4">
-										<div class="card">
-											<div class="card-body text-center">
+									<div className="col-lg-4">
+										<div className="card">
+											<div className="card-body text-center">
 												<h6 className="font-weight-semibold">Easy to Find Data</h6>
 												<p className="mb-3">Common problem of templates is that all code is deeply integrated into the core. This limits your freedom in decreasing amount of code, i.e. it becomes pretty difficult to remove unnecessary code from the project. Limitless allows you to remove unnecessary and extra code easily just by removing the path to specific LESS file with component styling. All plugins and their options are also in separate files. Use only components you actually need!</p>
 
@@ -102,7 +118,7 @@ export default class Home extends Component {
 						{/*How tidal cross works*/}
 						<div className="card">
 							<div className="card-header header-elements-inline">
-								<h1 className="card-title">How Tidal Corss Works?</h1>
+								<h1 className="card-title">How Tidal Cross Works?</h1>
 							</div>
 							<div className="card-body">
 								<h6 className="font-weight-semibold">Fully Functional</h6>
@@ -186,134 +202,134 @@ export default class Home extends Component {
 								<h1 className="card-title">What Our Customers are Saying</h1>
 							</div>
 							<div className="card-body">
-								<div class="row">
-									<div class="col-lg-3 col-md-6">
-										<div class="card">
-											<div class="card-img-actions">
-												<img class="card-img-top img-fluid" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="" />
-												<div class="card-img-actions-overlay card-img-top">
-													<a href="#" class="btn btn-outline btn-icon bg-white text-white border-white border-2 rounded-round">
-														<i class="icon-download4"></i>
+								<div className="row">
+									<div className="col-lg-3 col-md-6">
+										<div className="card">
+											<div className="card-img-actions">
+												<img className="card-img-top img-fluid" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="" />
+												<div className="card-img-actions-overlay card-img-top">
+													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 rounded-round">
+														<i className="icon-download4"></i>
 													</a>
-													<a href="#" class="btn btn-outline btn-icon bg-white text-white border-white border-2 ml-2 rounded-round">
-														<i class="icon-link2"></i>
+													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 ml-2 rounded-round">
+														<i className="icon-link2"></i>
 													</a>
 												</div>
 											</div>
 
-											<div class="card-body">
-												<h5 class="card-title">For ostrich much</h5>
-												<p class="card-text">Some various less crept gecko the jeepers dear forewent far the ouch far a incompetent saucy wherever towards</p>
+											<div className="card-body">
+												<h5 className="card-title">For ostrich much</h5>
+												<p className="card-text">Some various less crept gecko the jeepers dear forewent far the ouch far a incompetent saucy wherever towards</p>
 											</div>
 
-											<div class="card-footer bg-transparent d-flex justify-content-between">
-												<span class="text-muted">April 12, 2018</span>
+											<div className="card-footer bg-transparent d-flex justify-content-between">
+												<span className="text-muted">April 12, 2018</span>
 												<span>
-													<i class="icon-star-full2 font-size-base text-warning-300"></i>
-													<i class="icon-star-full2 font-size-base text-warning-300"></i>
-													<i class="icon-star-full2 font-size-base text-warning-300"></i>
-													<i class="icon-star-full2 font-size-base text-warning-300"></i>
-													<i class="icon-star-half font-size-base text-warning-300"></i>
-													<span class="text-muted ml-2">(12)</span>
+													<i className="icon-star-full2 font-size-base text-warning-300"></i>
+													<i className="icon-star-full2 font-size-base text-warning-300"></i>
+													<i className="icon-star-full2 font-size-base text-warning-300"></i>
+													<i className="icon-star-full2 font-size-base text-warning-300"></i>
+													<i className="icon-star-half font-size-base text-warning-300"></i>
+													<span className="text-muted ml-2">(12)</span>
 												</span>
 											</div>
 										</div>
 									</div>
 
-									<div class="col-lg-3 col-md-6">
-										<div class="card">
-											<div class="card-img-actions">
-												<img class="card-img-top img-fluid" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="" />
-												<div class="card-img-actions-overlay card-img-top">
-													<a href="#" class="btn btn-outline btn-icon bg-white text-white border-white border-2 rounded-round">
-														<i class="icon-download4"></i>
+									<div className="col-lg-3 col-md-6">
+										<div className="card">
+											<div className="card-img-actions">
+												<img className="card-img-top img-fluid" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="" />
+												<div className="card-img-actions-overlay card-img-top">
+													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 rounded-round">
+														<i className="icon-download4"></i>
 													</a>
-													<a href="#" class="btn btn-outline btn-icon bg-white text-white border-white border-2 ml-2 rounded-round">
-														<i class="icon-link2"></i>
+													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 ml-2 rounded-round">
+														<i className="icon-link2"></i>
 													</a>
 												</div>
 											</div>
 
-											<div class="card-body">
-												<h5 class="card-title">Helpfully stolidly</h5>
-												<p class="card-text">Hippopotamus aside while a shrewdly this after kookaburra wow in haphazardly much salmon buoyantly sullen gosh</p>
+											<div className="card-body">
+												<h5 className="card-title">Helpfully stolidly</h5>
+												<p className="card-text">Hippopotamus aside while a shrewdly this after kookaburra wow in haphazardly much salmon buoyantly sullen gosh</p>
 											</div>
 
-											<div class="card-footer bg-transparent d-flex justify-content-between">
-												<span class="text-muted">April 11, 2018</span>
+											<div className="card-footer bg-transparent d-flex justify-content-between">
+												<span className="text-muted">April 11, 2018</span>
 												<span>
-													<i class="icon-star-full2 font-size-base text-warning-300"></i>
-													<i class="icon-star-full2 font-size-base text-warning-300"></i>
-													<i class="icon-star-full2 font-size-base text-warning-300"></i>
-													<i class="icon-star-full2 font-size-base text-warning-300"></i>
-													<i class="icon-star-full2 font-size-base text-warning-300"></i>
-													<span class="text-muted ml-2">(35)</span>
+													<i className="icon-star-full2 font-size-base text-warning-300"></i>
+													<i className="icon-star-full2 font-size-base text-warning-300"></i>
+													<i className="icon-star-full2 font-size-base text-warning-300"></i>
+													<i className="icon-star-full2 font-size-base text-warning-300"></i>
+													<i className="icon-star-full2 font-size-base text-warning-300"></i>
+													<span className="text-muted ml-2">(35)</span>
 												</span>
 											</div>
 										</div>
 									</div>
 
-									<div class="col-lg-3 col-md-6">
-										<div class="card">
-											<div class="card-img-actions">
-												<img class="card-img-top img-fluid" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="" />
-												<div class="card-img-actions-overlay card-img-top">
-													<a href="#" class="btn btn-outline btn-icon bg-white text-white border-white border-2 rounded-round">
-														<i class="icon-download4"></i>
+									<div className="col-lg-3 col-md-6">
+										<div className="card">
+											<div className="card-img-actions">
+												<img className="card-img-top img-fluid" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="" />
+												<div className="card-img-actions-overlay card-img-top">
+													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 rounded-round">
+														<i className="icon-download4"></i>
 													</a>
-													<a href="#" class="btn btn-outline btn-icon bg-white text-white border-white border-2 ml-2 rounded-round">
-														<i class="icon-link2"></i>
+													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 ml-2 rounded-round">
+														<i className="icon-link2"></i>
 													</a>
 												</div>
 											</div>
 
-											<div class="card-body">
-												<h5 class="card-title">Considering far</h5>
-												<p class="card-text">Kookaburra so hey a less tritely far congratulated this winked some under had unblushing beyond sympathetic</p>
+											<div className="card-body">
+												<h5 className="card-title">Considering far</h5>
+												<p className="card-text">Kookaburra so hey a less tritely far congratulated this winked some under had unblushing beyond sympathetic</p>
 											</div>
 
-											<div class="card-footer bg-transparent d-flex justify-content-between">
-												<span class="text-muted">April 10, 2018</span>
+											<div className="card-footer bg-transparent d-flex justify-content-between">
+												<span className="text-muted">April 10, 2018</span>
 												<span>
-													<i class="icon-star-full2 font-size-base text-warning-300"></i>
-													<i class="icon-star-full2 font-size-base text-warning-300"></i>
-													<i class="icon-star-full2 font-size-base text-warning-300"></i>
-													<i class="icon-star-full2 font-size-base text-warning-300"></i>
-													<i class="icon-star-empty3 font-size-base text-warning-300"></i>
-													<span class="text-muted ml-2">(42)</span>
+													<i className="icon-star-full2 font-size-base text-warning-300"></i>
+													<i className="icon-star-full2 font-size-base text-warning-300"></i>
+													<i className="icon-star-full2 font-size-base text-warning-300"></i>
+													<i className="icon-star-full2 font-size-base text-warning-300"></i>
+													<i className="icon-star-empty3 font-size-base text-warning-300"></i>
+													<span className="text-muted ml-2">(42)</span>
 												</span>
 											</div>
 										</div>
 									</div>
 
-									<div class="col-lg-3 col-md-6">
-										<div class="card">
-											<div class="card-img-actions">
-												<img class="card-img-top img-fluid" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="" />
-												<div class="card-img-actions-overlay card-img-top">
-													<a href="#" class="btn btn-outline btn-icon bg-white text-white border-white border-2 rounded-round">
-														<i class="icon-download4"></i>
+									<div className="col-lg-3 col-md-6">
+										<div className="card">
+											<div className="card-img-actions">
+												<img className="card-img-top img-fluid" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="" />
+												<div className="card-img-actions-overlay card-img-top">
+													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 rounded-round">
+														<i className="icon-download4"></i>
 													</a>
-													<a href="#" class="btn btn-outline btn-icon bg-white text-white border-white border-2 ml-2 rounded-round">
-														<i class="icon-link2"></i>
+													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 ml-2 rounded-round">
+														<i className="icon-link2"></i>
 													</a>
 												</div>
 											</div>
 
-											<div class="card-body">
-												<h5 class="card-title">Despite perversely</h5>
-												<p class="card-text">Coming merits and was talent enough far. Sir joy northward sportsmen education. Put still any about manor heard</p>
+											<div className="card-body">
+												<h5 className="card-title">Despite perversely</h5>
+												<p className="card-text">Coming merits and was talent enough far. Sir joy northward sportsmen education. Put still any about manor heard</p>
 											</div>
 
-											<div class="card-footer bg-transparent d-flex justify-content-between">
-												<span class="text-muted">April 09, 2018</span>
+											<div className="card-footer bg-transparent d-flex justify-content-between">
+												<span className="text-muted">April 09, 2018</span>
 												<span>
-													<i class="icon-star-full2 font-size-base text-warning-300"></i>
-													<i class="icon-star-full2 font-size-base text-warning-300"></i>
-													<i class="icon-star-full2 font-size-base text-warning-300"></i>
-													<i class="icon-star-full2 font-size-base text-warning-300"></i>
-													<i class="icon-star-full2 font-size-base text-warning-300"></i>
-													<span class="text-muted ml-2">(59)</span>
+													<i className="icon-star-full2 font-size-base text-warning-300"></i>
+													<i className="icon-star-full2 font-size-base text-warning-300"></i>
+													<i className="icon-star-full2 font-size-base text-warning-300"></i>
+													<i className="icon-star-full2 font-size-base text-warning-300"></i>
+													<i className="icon-star-full2 font-size-base text-warning-300"></i>
+													<span className="text-muted ml-2">(59)</span>
 												</span>
 											</div>
 										</div>

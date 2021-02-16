@@ -65,7 +65,7 @@ export default class Nav extends Component {
 		}
     }
 
-	loadmenu = () => {
+	loadprofile = () => {
 		if (read_cookie(config.cookie_key).length !== 0) {
 			this.fetchuser(engine.decrypt(read_cookie(config.cookie_key)));
 			return (
@@ -111,16 +111,15 @@ export default class Nav extends Component {
 
 				<div className="collapse navbar-collapse" id="navbar-mobile">
 
+					{/*
+						<ul className="navbar-nav">
 					
-					<ul className="navbar-nav">
-						{/*
 						<li className="nav-item">
 							<a href="#" className="navbar-nav-link sidebar-control sidebar-main-toggle d-none d-md-block">
 								<i className="icon-paragraph-justify3"></i>
 							</a>
 						</li>
-						*/}
-						{/*
+						
 						<li className="nav-item dropdown">
 							<a href="#" className="navbar-nav-link dropdown-toggle caret-0" data-toggle="dropdown">
 								<i className="icon-bell2"></i>
@@ -213,15 +212,17 @@ export default class Nav extends Component {
 								</div>
 							</div>
 						</li>
-						*/}
+						
 					</ul>
+					*/}
 					
 					
 
 					{/*
 					<span className="badge bg-success-400 ml-md-auto mr-md-3">Active</span>
-					
+					*/}
 
+					{/*
 					<ul className="navbar-nav">
 						
 						 <li className="nav-item dropdown">
@@ -330,11 +331,12 @@ export default class Nav extends Component {
 						</li>
 					</ul>
 					*/}
+
 					{
 						this.loadspan()
                     }
 					{
-						this.loadmenu()
+						this.loadprofile()
 					}
 				</div>
 			</div>
