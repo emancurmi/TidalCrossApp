@@ -11,6 +11,7 @@ import Profile from './Components/Profile/Profile';
 import Dashboard from './Components/Dashboard/Dashboard';
 import OrderDetails from './Components/OrderDetails/OrderDetails';
 import Reset from './Components/Reset/Reset';
+import Contact from './Components/Contact/Contact';
 
 class App extends Component {
     state = {
@@ -58,6 +59,8 @@ class App extends Component {
                     <Route exact path="/dashboard" component={Dashboard} />
 
                     <Route exact path="/orderdetails" component={OrderDetails} />
+
+                    <Route exact path="/contact" component={Contact} />
 
                 </div>
                 <Footer />
