@@ -16,7 +16,7 @@ export default class Home extends Component {
 							<div className="profile-cover-img"></div>
 							<div className="media align-items-center text-center text-md-left flex-column flex-md-row m-0">
 								<div className="mr-md-3 mb-2 mb-md-0">
-									<a href="#" className="profile-thumb">
+									<a href="/profile" className="profile-thumb">
 										<img src="../../../../global_assets/images/placeholders/placeholder.jpg" className="border-white rounded-circle" width="48" height="48" alt="" />
 									</a>
 								</div>
@@ -80,14 +80,6 @@ export default class Home extends Component {
 										<div className="card">
 											<div className="card-body text-center">
 												<img className="card-img-top img-fluid" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="" />
-												<div className="card-img-actions-overlay card-img-top">
-													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 rounded-round">
-														<i className="icon-download4"></i>
-													</a>
-													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 ml-2 rounded-round">
-														<i className="icon-link2"></i>
-													</a>
-												</div>
 											</div>
 										</div>
 									</div>
@@ -207,14 +199,14 @@ export default class Home extends Component {
 										<div className="card">
 											<div className="card-img-actions">
 												<img className="card-img-top img-fluid" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="" />
-												<div className="card-img-actions-overlay card-img-top">
+												{/*<div className="card-img-actions-overlay card-img-top">
 													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 rounded-round">
 														<i className="icon-download4"></i>
 													</a>
 													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 ml-2 rounded-round">
 														<i className="icon-link2"></i>
 													</a>
-												</div>
+												</div>*/}
 											</div>
 
 											<div className="card-body">
@@ -240,14 +232,14 @@ export default class Home extends Component {
 										<div className="card">
 											<div className="card-img-actions">
 												<img className="card-img-top img-fluid" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="" />
-												<div className="card-img-actions-overlay card-img-top">
+												{/*<div className="card-img-actions-overlay card-img-top">
 													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 rounded-round">
 														<i className="icon-download4"></i>
 													</a>
 													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 ml-2 rounded-round">
 														<i className="icon-link2"></i>
 													</a>
-												</div>
+												</div>*/}
 											</div>
 
 											<div className="card-body">
@@ -273,14 +265,14 @@ export default class Home extends Component {
 										<div className="card">
 											<div className="card-img-actions">
 												<img className="card-img-top img-fluid" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="" />
-												<div className="card-img-actions-overlay card-img-top">
+												{/*<div className="card-img-actions-overlay card-img-top">
 													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 rounded-round">
 														<i className="icon-download4"></i>
 													</a>
 													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 ml-2 rounded-round">
 														<i className="icon-link2"></i>
 													</a>
-												</div>
+												</div>*/}
 											</div>
 
 											<div className="card-body">
@@ -306,14 +298,14 @@ export default class Home extends Component {
 										<div className="card">
 											<div className="card-img-actions">
 												<img className="card-img-top img-fluid" src="../../../../global_assets/images/placeholders/placeholder.jpg" alt="" />
-												<div className="card-img-actions-overlay card-img-top">
+												{/*<div className="card-img-actions-overlay card-img-top">
 													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 rounded-round">
 														<i className="icon-download4"></i>
 													</a>
 													<a href="#" className="btn btn-outline btn-icon bg-white text-white border-white border-2 ml-2 rounded-round">
 														<i className="icon-link2"></i>
 													</a>
-												</div>
+												</div>*/}
 											</div>
 
 											<div className="card-body">

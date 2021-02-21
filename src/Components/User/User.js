@@ -44,13 +44,13 @@ export default class User extends Component {
         }
         else {
             return (
-                <div class="content-wrapper">
-                    <div class="content">
-                        <div class="row">
-                            <div class="col-xl-8">
+                <div className="content-wrapper">
+                    <div className="content">
+                        <div className="row">
+                            <div className="col-xl-8">
                                 <OrdersList userid={this.state.userid} />
                             </div>
-                            <div class="col-xl-4">
+                            <div className="col-xl-4">
                                 <CreateOrderForm />
                             </div>
                         </div>

@@ -9,6 +9,7 @@ export default class Nav extends Component {
     constructor(props) {
         super(props);
 		this.state = {
+			userid: (read_cookie(config.cookie_key).length !== 0) ? engine.decrypt(read_cookie(config.cookie_key)) : 0,
 			user: {},
             isLoading: true,
         }
@@ -67,24 +68,28 @@ export default class Nav extends Component {
 
 	loadprofile = () => {
 		if (read_cookie(config.cookie_key).length !== 0) {
-			this.fetchuser(engine.decrypt(read_cookie(config.cookie_key)));
-			return (
-				<ul className="navbar-nav">
-					<li className="nav-item dropdown dropdown-user">
+			if (this.state.user.username === undefined) {
+				this.fetchuser(engine.decrypt(read_cookie(config.cookie_key)));
+			}
+			else {
+				return (
+					<ul className="navbar-nav">
+						<li className="nav-item dropdown dropdown-user">
 
-						<a href="#" className="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
-							<img src="global_assets/images/placeholders/placeholder.jpg" className="rounded-circle mr-2" height="34" alt="" />
-							<span>{this.state.user.username}</span>
-						</a>
+							<a href="#" className="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
+								<img src="./global_assets/images/placeholders/placeholder.jpg" className="rounded-circle mr-2" height="34" alt="" />
+								<span>{this.state.user.username}</span>
+							</a>
 
-						<div className="dropdown-menu dropdown-menu-right">
-							<Link to="/dashboard" className="dropdown-item"><i className="fa fa-tachometer" aria-hidden="true"></i>Dashboard</Link>
-							<Link to="/profile" className="dropdown-item"><i className="fa fa-user" aria-hidden="true"></i>Profile</Link>
-							<Link to="/signOut" className="dropdown-item"><i className="fa fa-sign-out" aria-hidden="true"></i>Log Out</Link>
-						</div>
-					</li>
-				</ul>
-			)
+							<div className="dropdown-menu dropdown-menu-right">
+								<Link to="/dashboard" className="dropdown-item"><i className="fa fa-tachometer" aria-hidden="true"></i>Dashboard</Link>
+								<Link to="/profile" className="dropdown-item"><i className="fa fa-user" aria-hidden="true"></i>Profile</Link>
+								<Link to="/signOut" className="dropdown-item"><i className="fa fa-sign-out" aria-hidden="true"></i>Log Out</Link>
+							</div>
+						</li>
+					</ul>
+				)
+			}
 		}
     }
 
@@ -94,7 +99,7 @@ export default class Nav extends Component {
 			<div className="navbar navbar-expand-md navbar-dark">
 				<div className="navbar-brand wmin-200">
 					<a href="/" className="d-inline-block">
-						<img src="global_assets/images/logo_light.png" alt="" />
+						<img src="./global_assets/images/logo_light.png" alt="" />
 					</a>
 				</div>
 

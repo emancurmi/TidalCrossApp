@@ -169,7 +169,7 @@ export default class OrderDetails extends Component {
         return (
             <div className="card">
                 <div className="card-header bg-light d-flex justify-content-between">
-                    <span className="font-size-sm text-uppercase font-weight-semibold">Order Information <a href="#">[#{this.state.order.orderid}]</a></span>
+                    <span className="font-size-sm text-uppercase font-weight-semibold">Order Information [#{this.state.order.orderid}]</span>
                     <span className="font-size-sm text-uppercase text-success font-weight-semibold">{this.state.order.orderdate}</span>
                 </div>
 

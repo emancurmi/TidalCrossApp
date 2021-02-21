@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
-import config from '../../config';
+//import { Redirect } from 'react-router-dom'
+//import config from '../../config';
 import Loader from '../Loader/Loader';
-import { read_cookie } from 'sfcookies';
+//import { read_cookie } from 'sfcookies';
 
 export default class Profile extends Component {
 
@@ -44,43 +44,43 @@ export default class Profile extends Component {
                 <div className="column center">
 
 
-                    <div class="row">
-                        <div class="col-xl-7">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h6 class="card-title">About Us</h6>
+                    <div className="row">
+                        <div className="col-xl-7">
+                            <div className="card">
+                                <div className="card-header">
+                                    <h6 className="card-title">About Us</h6>
                                 </div>
 
-                                <div class="card-body">
+                                <div className="card-body">
                                     Basic card example without header elements
 							</div>
                             </div>
                         </div>
-                        <div class="col-xl-5">
-                            <div class="card">
-                                <div class="card-header header-elements-inline">
-                                    <h6 class="card-title">Contact Us</h6>
+                        <div className="col-xl-5">
+                            <div className="card">
+                                <div className="card-header header-elements-inline">
+                                    <h6 className="card-title">Contact Us</h6>
                                 </div>
 
-                                <div class="card-body">
+                                <div className="card-body">
                                     <form action="#">
-                                        <div class="form-group">
+                                        <div className="form-group">
                                             <label>Your name:</label>
-                                            <input type="text" class="form-control" placeholder="Enter your name" />
+                                            <input type="text" className="form-control" placeholder="Enter your name" />
                                         </div>
 
-                                        <div class="form-group">
+                                        <div className="form-group">
                                             <label>Your E-mail:</label>
-                                            <input type="email" class="form-control" placeholder="Enter your e-mail address" />
+                                            <input type="email" className="form-control" placeholder="Enter your e-mail address" />
                                         </div>
 
-                                        <div class="form-group">
+                                        <div className="form-group">
                                             <label>Your message:</label>
-                                            <textarea rows="3" cols="3" class="form-control" placeholder="Enter your message here"></textarea>
+                                            <textarea rows="3" cols="3" className="form-control" placeholder="Enter your message here"></textarea>
                                         </div>
 
-                                        <div class="d-flex justify-content-end align-items-center">
-                                            <button type="submit" class="btn bg-blue ml-3">Submit <i class="icon-paperplane ml-2"></i></button>
+                                        <div className="d-flex justify-content-end align-items-center">
+                                            <button type="submit" className="btn bg-blue ml-3">Submit <i className="icon-paperplane ml-2"></i></button>
                                         </div>
                                     </form>
                                 </div>

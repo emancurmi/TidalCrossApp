@@ -86,6 +86,24 @@ export default class OrdersList extends Component {
         if (this.state.shopid != null) { this.fetchordersbyshop(this.state.shopid) }
     }
 
+    generateorderlist = () => {
+        if (this.state.orders !== undefined)
+        {
+            this.state.orders.map(order => {
+                if (this.props.userid != null) {
+                    return (
+                        <OrderListItem key={order.orderid} id={order.orderid} status={order.orderstatus} date={order.orderdate.split('T')[0]} orderdata={order.orderdata} user={order.ordershopid} />
+                    )
+                }
+                else if (this.props.shopid != null) {
+                    return (
+                        <OrderListItem key={order.orderid} id={order.orderid} status={order.orderstatus} date={order.orderdate.split('T')[0]} user={order.orderuserid} />
+                    )
+                }
+            })
+        }
+    }
+
     componentDidMount() {
         if (this.state.userid != null) { this.fetchordersbyuser(this.state.userid) }
         if (this.state.shopid != null) { this.fetchordersbyshop(this.state.shopid) }
@@ -94,6 +112,7 @@ export default class OrdersList extends Component {
             () => this.tick(),
             10000
         );
+
     }
 
     componentWillMount() {
@@ -125,18 +144,7 @@ export default class OrdersList extends Component {
                                 </td>
                             </tr>
 
-                            {this.state.orders.map(order => {
-                                if (this.props.userid != null) {
-                                    return (
-                                        <OrderListItem key={order.orderid} id={order.orderid} status={order.orderstatus} date={order.orderdate.split('T')[0]} orderdata={order.orderdata} user={order.ordershopid} />
-                                    )
-                                }
-                                else if (this.props.shopid != null) {
-                                    return (
-                                        <OrderListItem key={order.orderid} id={order.orderid} status={order.orderstatus} date={order.orderdate.split('T')[0]} user={order.orderuserid} />
-                                    )
-                                }
-                            })}
+                            {this.generateorderlist()}
 
                         </tbody>
                     </table>

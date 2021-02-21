@@ -3,7 +3,7 @@ import config from '../../config';
 import engine from '../../engine';
 import { read_cookie } from 'sfcookies';
 import Loader from '../Loader/Loader';
-import Modal from '../Modal/Modal';
+//import Modal from '../Modal/Modal';
 
 
 export default class CreateOrderForm extends Component {
@@ -108,7 +108,6 @@ export default class CreateOrderForm extends Component {
         }
     }
 
-
     handleShopSelect = (e) => {
         const shopSel = e.target.value;
         this.state.shops.map(shop => {
@@ -124,7 +123,6 @@ export default class CreateOrderForm extends Component {
         console.log(this.state.selectedshop);
     }
 
-
     componentDidMount() {
         this.fetchshops();
     }
@@ -138,12 +136,12 @@ export default class CreateOrderForm extends Component {
         else {
             return (
 
-                <div class="card">
-                    <div class="card-header header-elements-inline">
-                        <h5 class="card-title">Create new order</h5>
+                <div className="card">
+                    <div className="card-header header-elements-inline">
+                        <h5 className="card-title">Create new order</h5>
                     </div>
 
-                    <div class="card-body">
+                    <div className="card-body">
                         <form onSubmit={this.handleSubmit}>
                             <div className="form-group">
                                 <select className="form-control" name="Countries" onChange={e => this.handleShopSelect(e)} value={this.state.selectedshop.shopname}>
@@ -161,8 +159,8 @@ export default class CreateOrderForm extends Component {
                                 <textarea id="orderbox" name="orderbox" rows="5" cols="5" className="form-control" placeholder="Enter your order here" required></textarea>
                             </div>
 
-                            <div class="text-right">
-                                <button id="btnOrderSubmit" type="submit" className="btn btn-primary">Submit Order <i class="icon-paperplane ml-2"></i></button>
+                            <div className="text-right">
+                                <button id="btnOrderSubmit" type="submit" className="btn btn-primary">Submit Order <i className="icon-paperplane ml-2"></i></button>
                             </div>
                         </form>
                     </div>

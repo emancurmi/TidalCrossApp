@@ -13,7 +13,7 @@ export default class Footer extends Component {
 
                 <div className="navbar-collapse collapse" id="navbar-footer">
                     <span className="navbar-text">
-                        &copy; 2020. <a href="#">Tidal Cross</a> by <a href="http://orpyxis.com" target="_blank">Orpyxis Technologies</a>
+                        &copy; 2020. <a href="https://www.tidalcross.com">Tidal Cross</a> by <a href="https://orpyxis.com" target="_blank" rel="noreferrer">Orpyxis Technologies</a>
                     </span>
                     {/*
                     <ul className="navbar-nav ml-lg-auto">
