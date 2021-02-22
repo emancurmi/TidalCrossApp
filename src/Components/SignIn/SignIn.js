@@ -167,7 +167,7 @@ export default class SignIn extends Component {
                                         <a href="/SignUp" className="btn btn-light btn-block">Sign up</a>
                                     </div>
 
-                                    <span className="form-text text-center text-muted">By continuing, you're confirming that you've read our <a href="#">Terms &amp; Conditions</a> and <a href="#">Cookie Policy</a></span>
+                                    <span className="form-text text-center text-muted">By continuing, you're confirming that you've read our <a href="termsconditions">Terms &amp; Conditions</a> and <a href="cookiepolicy">Cookie Policy</a></span>
                                 </div>
                             </div>
                         </form>

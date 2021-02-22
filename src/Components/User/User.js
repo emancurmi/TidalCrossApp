@@ -49,6 +49,7 @@ export default class User extends Component {
                         <div className="row">
                             <div className="col-xl-8">
                                 <OrdersList userid={this.state.userid} />
+                                <a href="/order">All Orders</a>
                             </div>
                             <div className="col-xl-4">
                                 <CreateOrderForm />

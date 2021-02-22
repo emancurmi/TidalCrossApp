@@ -82,20 +82,20 @@ export default class OrdersList extends Component {
     }
 
     tick() {
-        if (this.state.userid != null) { this.fetchordersbyuser(this.state.userid) }
-        if (this.state.shopid != null) { this.fetchordersbyshop(this.state.shopid) }
+        if (this.state.userid != null) { this.fetchordersbyuser(this.state.userid);  }
+        if (this.state.shopid != null) { this.fetchordersbyshop(this.state.shopid); }
     }
 
     generateorderlist = () => {
-        if (this.state.orders !== undefined)
+        if (this.state.orders.length >= 0)
         {
             this.state.orders.map(order => {
-                if (this.props.userid != null) {
+                if (this.props.userid !== undefined) {
                     return (
                         <OrderListItem key={order.orderid} id={order.orderid} status={order.orderstatus} date={order.orderdate.split('T')[0]} orderdata={order.orderdata} user={order.ordershopid} />
                     )
                 }
-                else if (this.props.shopid != null) {
+                else if (this.props.shopid !== undefined) {
                     return (
                         <OrderListItem key={order.orderid} id={order.orderid} status={order.orderstatus} date={order.orderdate.split('T')[0]} user={order.orderuserid} />
                     )
@@ -122,20 +122,13 @@ export default class OrdersList extends Component {
     render() {
         return (
             <div className="card">
-                <div className="card-header header-elements-sm-inline">
+                <div className="card-header bg-light d-flex justify-content-between">
                     <h6 className="card-title">Support tickets</h6>
                     <div className="header-elements"></div>
                 </div>
 
                 <div className="table-responsive">
                     <table className="table text-nowrap">
-                        <thead>
-                            <tr>
-                                <th>Due</th>
-                                <th>User</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
                         <tbody>
                             <tr className="table-active table-border-double">
                                 <td colSpan="3">Active tickets</td>
@@ -143,12 +136,38 @@ export default class OrdersList extends Component {
                                     <span className="badge bg-blue badge-pill">{this.state.orders !== undefined ? this.state.orders.length : 0}</span>
                                 </td>
                             </tr>
-
-                            {this.generateorderlist()}
+                            <tr>
+                                <th>Due</th>
+                                <th>User</th>
+                                <th>Description</th>
+                            </tr>
+                            
+                            {
+                                this.state.orders.map(order => {
+                                    if (this.props.userid !== undefined) {
+                                        return (
+                                            <OrderListItem key={order.orderid} id={order.orderid} status={order.orderstatus} date={order.orderdate.split('T')[0]} orderdata={order.orderdata} user={order.ordershopid} />
+                                        )
+                                    }
+                                    else if (this.props.shopid !== undefined) {
+                                        return (
+                                            <OrderListItem key={order.orderid} id={order.orderid} status={order.orderstatus} date={order.orderdate.split('T')[0]} user={order.orderuserid} />
+                                        )
+                                    }
+                                })
+                           } 
 
                         </tbody>
                     </table>
                 </div>
+
+                <div className="card-footer d-flex justify-content-between">
+                    <span className="text-muted"></span>
+                    <ul className="list-inline mb-0">
+                        <li className="list-inline-item"><a href="/allorders">Load All</a></li>
+                    </ul>
+                </div>
+                
             </div>
         )
     }

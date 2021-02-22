@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import config from '../../config';
 
 export default class OrderListItem extends Component {
-    //<OrderListItem id={order.orderid} status={order.orderstatus} date={order.orderdate} user={order.ordershopid} />
 
     constructor(props) {
         super(props)
@@ -57,14 +56,10 @@ export default class OrderListItem extends Component {
         return diffDays;
     }
 
-    componentDidMount() {
-
-    }
 
     render() {
 
         return (
-
             <tr>
                 <td className="text-center">
                     <h6 className="mb-0">{this.calculate()}</h6>
@@ -95,12 +90,6 @@ export default class OrderListItem extends Component {
                     </div>
                 </td>
             </tr>
-
-
-
-            //<p>
-            //    <a href={"/order/"+ this.state.id} className={this.state.status}>{this.state.id} - {this.state.user} - {this.state.date}</a>
-            //</p>
         )
     }
 }

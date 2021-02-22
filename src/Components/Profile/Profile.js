@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 import config from '../../config';
+import engine from '../../engine';
 import Loader from '../Loader/Loader';
 import { read_cookie } from 'sfcookies';
 
@@ -11,25 +12,64 @@ export default class Profile extends Component {
         super(props);
 
         this.state = {
-            //userid: engine.decrypt(read_cookie(config.cookie_key)),
+			userid: engine.decrypt(read_cookie(config.cookie_key)),
+			currentuser: {},
+			currentprofileinfo: {
+				addressone: "",
+				addresstwo: "",
+				addresscity: "",
+				addressstate: "",
+				addresszip: ""
+            },
             error: null,
             isLoading: true,
             showModal: false
         }
-    }
+	}
 
-    renderRedirect = () => {
-        console.log(read_cookie(config.cookie_key).length);
-        if (read_cookie(config.cookie_key).length === 0) {
-            return <Redirect to='/SignIn/' />
-        }
-    }
+	renderRedirect = () => {
+		if (read_cookie(config.cookie_key).length === 0) {
+			return <Redirect to='/SignIn/' />
+		}
+	}
 
-    setIsLoading = data => {
-        this.setState({
-            isLoading: data
-        })
-    }
+	//set state section
+	setIsLoading = data => {
+		this.setState({
+			isLoading: data
+		})
+	}
+
+	setCurrentUserData = data => {
+		this.setState({
+			currentuser: data
+		})
+	}
+
+	//Fetch section 
+	fetchcurrentuser = (userid) => {
+		fetch(config.API_ENDPOINT + 'user/' + userid, {
+			method: 'GET',
+			headers: {
+				'content-type': 'application/json',
+				'Authorization': `Bearer ${config.API_TOKEN}`
+			}
+		})
+			.then(res => {
+				if (!res.ok) {
+					return res.json().then(error => Promise.reject(error))
+				}
+				return res.json()
+			})
+			.then(data => {
+				this.setCurrentUserData(data);
+			})
+			.catch(error => {
+				this.setState({ error })
+			})
+	}
+
+    
 
     showerror = () => {
         if (this.state.error != null) {
@@ -37,10 +77,15 @@ export default class Profile extends Component {
         }
     }
 
+	//component
 	componentDidMount() {
 		this.setIsLoading(false);
+		this.fetchcurrentuser(this.state.userid);
+		console.log(this.state.currentuser);
 	}
 
+
+	//rendering blocks
 	renderProfileInfo() {
 		return (
 			<div className="card">
@@ -48,9 +93,7 @@ export default class Profile extends Component {
 					<h5 className="card-title">Profile information</h5>
 					<div className="header-elements">
 						<div className="list-icons">
-							<a className="list-icons-item" data-action="collapse"></a>
 							<a className="list-icons-item" data-action="reload"></a>
-							<a className="list-icons-item" data-action="remove"></a>
 						</div>
 					</div>
 				</div>
@@ -61,11 +104,11 @@ export default class Profile extends Component {
 							<div className="row">
 								<div className="col-md-6">
 									<label>Username</label>
-									<input type="text" value="Eugene" className="form-control" />
+									<input type="text" value={this.state.currentuser.useremail} readonly="readonly" className="form-control" />
 								</div>
 								<div className="col-md-6">
 									<label>Full name</label>
-									<input type="text" value="Kopyov" className="form-control" />
+									<input type="text" value={this.state.currentuser.username} readonly="readonly" className="form-control" />
 								</div>
 							</div>
 						</div>
@@ -74,11 +117,11 @@ export default class Profile extends Component {
 							<div className="row">
 								<div className="col-md-6">
 									<label>Address line 1</label>
-									<input type="text" value="Ring street 12" className="form-control" />
+									<input type="text" value={this.state.currentprofileinfo.addressone} className="form-control" />
 								</div>
 								<div className="col-md-6">
 									<label>Address line 2</label>
-									<input type="text" value="building D, flat #67" className="form-control" />
+									<input type="text" value={this.state.currentprofileinfo.addresstwo} className="form-control" />
 								</div>
 							</div>
 						</div>
@@ -87,15 +130,15 @@ export default class Profile extends Component {
 							<div className="row">
 								<div className="col-md-4">
 									<label>City</label>
-									<input type="text" value="Munich" className="form-control" />
+									<input type="text" value={this.state.currentprofileinfo.addresscity} className="form-control" />
 								</div>
 								<div className="col-md-4">
 									<label>State/Province</label>
-									<input type="text" value="Bayern" className="form-control" />
+									<input type="text" value={this.state.currentprofileinfo.addressstate} className="form-control" />
 								</div>
 								<div className="col-md-4">
 									<label>ZIP code</label>
-									<input type="text" value="1031" className="form-control" />
+									<input type="text" value={this.state.currentprofileinfo.addresszip} className="form-control" />
 								</div>
 							</div>
 						</div>
@@ -104,8 +147,19 @@ export default class Profile extends Component {
 							<div className="row">
 								<div className="col-md-6">
 									<label>Email</label>
-									<input type="text" readonly="readonly" value="eugene@kopyov.com" className="form-control" />
+									<input type="text" readonly="readonly" value={this.state.currentuser.useremail} className="form-control" />
 								</div>
+								<div className="col-md-6">
+									<label>Phone #</label>
+									<input type="text" value={this.state.currentuser.userphone} className="form-control" />
+									<span className="form-text text-muted">+99-99-9999-9999</span>
+								</div>
+							</div>
+						</div>
+
+						{/*<div className="form-group">
+							<div className="row">
+								
 								<div className="col-md-6">
 									<label>Your country</label>
 									<select className="form-control form-control-select2" data-fouc>
@@ -117,16 +171,6 @@ export default class Profile extends Component {
 										<option value="uk">United Kingdom</option>
 									</select>
 								</div>
-							</div>
-						</div>
-
-						<div className="form-group">
-							<div className="row">
-								<div className="col-md-6">
-									<label>Phone #</label>
-									<input type="text" value="+99-99-9999-9999" className="form-control" />
-									<span className="form-text text-muted">+99-99-9999-9999</span>
-								</div>
 
 								<div className="col-md-6">
 									<label>Upload profile image</label>
@@ -134,7 +178,7 @@ export default class Profile extends Component {
 									<span className="form-text text-muted">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
 								</div>
 							</div>
-						</div>
+						</div>*/}
 
 						<div className="text-right">
 							<button type="submit" className="btn btn-primary">Save changes</button>
@@ -152,9 +196,7 @@ export default class Profile extends Component {
 					<h5 className="card-title">Account settings</h5>
 					<div className="header-elements">
 						<div className="list-icons">
-							<a className="list-icons-item" data-action="collapse"></a>
 							<a className="list-icons-item" data-action="reload"></a>
-							<a className="list-icons-item" data-action="remove"></a>
 						</div>
 					</div>
 				</div>
@@ -165,12 +207,12 @@ export default class Profile extends Component {
 							<div className="row">
 								<div className="col-md-6">
 									<label>Username</label>
-									<input type="text" value="Kopyov" readonly="readonly" className="form-control" />
+									<input type="text" value={this.state.currentuser.useremail} readonly="readonly" className="form-control" />
 								</div>
 
 								<div className="col-md-6">
 									<label>Current password</label>
-									<input type="password" value="password" readonly="readonly" className="form-control" />
+									<input type="password" placeholder="Enter current password" className="form-control" />
 								</div>
 							</div>
 						</div>
@@ -189,7 +231,7 @@ export default class Profile extends Component {
 							</div>
 						</div>
 
-						<div className="form-group">
+						{/*<div className="form-group">
 							<div className="row">
 								<div className="col-md-6">
 									<label>Profile visibility</label>
@@ -256,7 +298,7 @@ export default class Profile extends Component {
 									</div>
 								</div>
 							</div>
-						</div>
+						</div>*/}
 
 						<div className="text-right">
 							<button type="submit" className="btn btn-primary">Save changes</button>
@@ -283,14 +325,14 @@ export default class Profile extends Component {
 						</div>
 					</div>
 
-					<h6 className="font-weight-semibold mb-0">Hanna Dorman</h6>
-					<span className="d-block text-muted">UX/UI designer</span>
+					<h6 className="font-weight-semibold mb-0">{this.state.currentuser.username}</h6>
+					{/*<span className="d-block text-muted">UX/UI designer</span>
 
 					<div className="list-icons list-icons-extended mt-3">
 						<a href="#" className="list-icons-item" data-popup="tooltip" title="Google Drive" data-container="body"><i className="icon-google-drive"></i></a>
 						<a href="#" className="list-icons-item" data-popup="tooltip" title="Twitter" data-container="body"><i className="icon-twitter"></i></a>
 						<a href="#" className="list-icons-item" data-popup="tooltip" title="Github" data-container="body"><i className="icon-github"></i></a>
-					</div>
+					</div>*/}
 				</div>
 			</div>
 		)
@@ -365,7 +407,7 @@ export default class Profile extends Component {
 					<span className="card-title font-weight-semibold">Share your thoughts</span>
 					<div className="header-elements">
 						<div className="list-icons">
-							<a className="list-icons-item" data-action="collapse"></a>
+							
 						</div>
 					</div>
 				</div>
@@ -376,9 +418,9 @@ export default class Profile extends Component {
 
 						<div className="d-flex align-items-center">
 							<div className="list-icons list-icons-extended">
-								<a href="#" className="list-icons-item" data-popup="tooltip" title="Add photo" data-container="body"><i className="icon-images2"></i></a>
+								{/*<a href="#" className="list-icons-item" data-popup="tooltip" title="Add photo" data-container="body"><i className="icon-images2"></i></a>
 								<a href="#" className="list-icons-item" data-popup="tooltip" title="Add video" data-container="body"><i className="icon-film2"></i></a>
-								<a href="#" className="list-icons-item" data-popup="tooltip" title="Add event" data-container="body"><i className="icon-calendar2"></i></a>
+								<a href="#" className="list-icons-item" data-popup="tooltip" title="Add event" data-container="body"><i className="icon-calendar2"></i></a>*/}
 							</div>
 
 							<button type="button" className="btn bg-blue btn-labeled btn-labeled-right ml-auto"><b><i className="icon-paperplane"></i></b> Share</button>

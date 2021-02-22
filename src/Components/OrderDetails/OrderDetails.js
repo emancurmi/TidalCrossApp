@@ -166,11 +166,15 @@ export default class OrderDetails extends Component {
     }
 
     fillOrderInformation() {
+
+        let unix_timestamp = this.state.order.orderdate;
+        var date = new Date(unix_timestamp * 1000);
+        
         return (
             <div className="card">
                 <div className="card-header bg-light d-flex justify-content-between">
                     <span className="font-size-sm text-uppercase font-weight-semibold">Order Information [#{this.state.order.orderid}]</span>
-                    <span className="font-size-sm text-uppercase text-success font-weight-semibold">{this.state.order.orderdate}</span>
+                    <span className="font-size-sm text-uppercase text-success font-weight-semibold">{date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + '  ' + date.getHours() + ':' + date.getMinutes()}</span>
                 </div>
 
                 <div className="card-body">
