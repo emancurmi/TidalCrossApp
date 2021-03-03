@@ -678,6 +678,7 @@ input[type=text].noui-height-helper:not(.noUi-target)[data-fouc] {
 
 .dropdown-item.form-check.form-check-right .uniform-checker,
 .dropdown-item.form-check.form-check-right .uniform-choice {
+  z-index: 9999;
   left: auto;
   right: 1rem; }
 

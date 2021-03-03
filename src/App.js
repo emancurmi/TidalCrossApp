@@ -15,6 +15,7 @@ import Contact from './Components/Contact/Contact';
 import TermsConditions from './Components/TermsConditions/TermsConditions';
 import CookiePolicy from './Components/CookiePolicy/CookiePolicy';
 import PrivacyPolicy from './Components/PrivacyPolicy/PrivacyPolicy';
+import NotFoundPage from './Components/NotFoundPage/NotFoundPage';
 
 class App extends Component {
     state = {
@@ -73,6 +74,7 @@ class App extends Component {
                     <Route exact path="/orderdetails" component={OrderDetails} />
 
                     <Route exact path="/contact" component={Contact} />
+
 
                 </div>
                 <Footer />

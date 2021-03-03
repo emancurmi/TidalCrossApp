@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /* ------------------------------------------------------------------------------
  *
  *  # Bootstrap v4.3.1 (https://getbootstrap.com)
@@ -2272,7 +2272,7 @@ input[type="button"].btn-block {
   top: 100%;
   /*rtl:ignore*/
   left: 0;
-  z-index: 1000;
+  z-index: 9999;
   display: none;
   float: left;
   min-width: 11.25rem;

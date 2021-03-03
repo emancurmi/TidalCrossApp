@@ -52,15 +52,15 @@ export default class Admin extends Component {
                         <div className="row content">
                             <div className="col-3">
                                 <h3>Members</h3>
-                                
                             </div>
                             <div className="col-3">
                                 <h3>Shops</h3>
-
                             </div>
                             <div className="col-3">
                                 <h3>Orders</h3>
-
+                            </div>
+                            <div className="col-3">
+                                <h3>Company Info</h3>
                             </div>
                         </div>
                     </div>

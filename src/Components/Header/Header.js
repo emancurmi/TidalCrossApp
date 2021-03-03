@@ -18,8 +18,8 @@ export default class Header extends Component {
 						<div className="breadcrumb justify-content-center">
 							<a href="/contact" className="breadcrumb-elements-item">
 								<i className="icon-comment-discussion mr-2"></i>
-						Support
-					</a>
+								Support
+							</a>
 
 							{/*
 							<div className="breadcrumb-elements-item dropdown p-0">

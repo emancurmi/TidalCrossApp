@@ -165,24 +165,6 @@ export default class Reset extends Component {
                     </div>
                 </div>
             </div>
-
-            //<div className="column center">
-            //    <div className="white">
-            //        <div className="row center">
-            //            <div className="col-1">
-            //                <h1>Login</h1>
-            //                <form onSubmit={this.handleSubmit} >
-            //                    <input type="Text" id="useremail" name="useremail" placeholder="Email Address" title="Enter Phone Number" required /><br />
-            //                    <input type="Password" id="userpassword" name="userpassword" placeholder="Password" title="Enter Pin Number" required /><br />
-            //                    <button id="btnLoginSubmit" className="black" type="submit">Sign In</button>
-            //                </form>
-            //                {this.showerror()}
-            //                {this.renderRedirect()}
-            //                <a href="/SignUp"> Don't have an account? Register</a>
-            //            </div>
-            //        </div>
-            //    </div>
-            //</div>
         )
     }
 }

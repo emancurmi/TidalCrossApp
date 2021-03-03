@@ -5,17 +5,18 @@ import { Link } from 'react-router-dom';
 export default class NotFoundPage extends Component {
     render() {
         return (
-            <div className="white">
-                <div className="row content">
-                    <div className="column col-1 center" >
-                        <h1>OOPS!</h1>
-                        <h4>Error 404 : Page Not Found</h4>
-                        <p>
-                            <Link to="/">Go to Home </Link>
-                        </p>
-                    </div>
-                </div>
-            </div>
+			<div class="content d-flex justify-content-center align-items-center">
+
+				<div class="flex-fill">
+
+					<div class="text-center mb-3">
+						<h1 class="error-title">404</h1>
+						<h5>Oops, an error has occurred. Page not found!</h5>
+					</div>
+
+				</div>
+
+			</div>
         )
     }
 }

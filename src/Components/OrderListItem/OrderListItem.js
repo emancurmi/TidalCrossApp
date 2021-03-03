@@ -56,7 +56,6 @@ export default class OrderListItem extends Component {
         return diffDays;
     }
 
-
     render() {
 
         return (
