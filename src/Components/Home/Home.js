@@ -381,31 +381,31 @@ export default class Home extends Component {
 								<h2>App Features</h2>
 							</div>
 						</div>
-						<div className="row">
+						<div className="row align-items-center justify-content-center">
 							<div className="col-lg-4 col-md- col-sm-6">
-								<div className="media d-block pb_feature-v1 text-left">
+								<div className="media d-block pb_feature-v1 text-center">
 									<div className="pb_icon"><i className="ion-ios-bookmarks-outline pb_icon-gradient"></i></div>
 									<div className="media-body">
-										<h5 className="mt-0 mb-3 heading">Step 1</h5>
+										<h3 className="mt-0 mb-3 heading"><strong><u>Step 1</u></strong></h3>
 										<p className="text-sans-serif">Choose your supplier from our always updating list.</p>
 									</div>
 								</div>
 							</div>
 							<div className="col-lg-4 col-md- col-sm-6">
-								<div className="media d-block pb_feature-v1 text-left">
+								<div className="media d-block pb_feature-v1 text-center">
 									<div className="pb_icon"><i className="ion-ios-speedometer-outline pb_icon-gradient"></i></div>
 									<div className="media-body">
-										<h5 className="mt-0 mb-3 heading">Step 2</h5>
+										<h3 className="mt-0 mb-3 heading"><strong><u>Step 2</u></strong></h3>
 										<p className="text-sans-serif">Write your shopping list as if you're writing a message</p>
 									</div>
 								</div>
 							</div>
 
 							<div className="col-lg-4 col-md- col-sm-6">
-								<div className="media d-block pb_feature-v1 text-left">
+								<div className="media d-block pb_feature-v1 text-center">
 									<div className="pb_icon"><i className="ion-ios-infinite-outline pb_icon-gradient"></i></div>
 									<div className="media-body">
-										<h5 className="mt-0 mb-3 heading">Step 3</h5>
+										<h3 className="mt-0 mb-3 heading"><strong><u>Step 3</u></strong></h3>
 										<p className="text-sans-serif">Submit your order and wait for notification when read.</p>
 									</div>
 								</div>
@@ -427,9 +427,7 @@ export default class Home extends Component {
 							</div>
 							<div className="col-md-1"></div>
 							<div className="col-md-5">
-								<div className="bg-white rounded pb_form_v1">
-									
-								</div>
+									<img src="./global_assets/images/shop_dash.png" width="700" alt="Shop Dashboard" />
 							</div>
 						</div>
 					</div>
