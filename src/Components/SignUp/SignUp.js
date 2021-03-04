@@ -55,8 +55,6 @@ export default class SignUp extends Component {
             selectedrole = "member";
         }
 
-        console.log(selectedrole);
-
         const user = {
             username: regusername.value,
             useremail: reguseremail.value.toLowerCase(),
@@ -64,7 +62,7 @@ export default class SignUp extends Component {
             userpassword: reguserpassword.value,
             userrole: selectedrole
         }
-        console.log(user);
+
         this.setState({ error: null })
 
         fetch(this.state.config.API_ENDPOINT + 'user/', {
