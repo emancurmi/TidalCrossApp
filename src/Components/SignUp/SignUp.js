@@ -47,7 +47,7 @@ export default class SignUp extends Component {
     handleSubmit = e => {
         e.preventDefault();
 
-        const { regusername, reguserphone, reguseremail, reguserpassword, regisshop } = e.target;
+        const { regusername, reguseremail, reguserphone, reguserpassword, regisshop } = e.target;
 
         let selectedrole = "user"
 
@@ -142,7 +142,7 @@ export default class SignUp extends Component {
                                     </div>
 
                                     <div className="form-group form-group-feedback form-group-feedback-left">
-                                        <input type="password" className="form-control" placeholder="Password" id="userpassword" name="userpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required />
+                                        <input type="password" className="form-control" placeholder="Password" id="reguserpassword" name="reguserpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required />
                                         <div className="form-control-feedback">
                                             <i className="icon-lock2 text-muted"></i>
                                         </div>
