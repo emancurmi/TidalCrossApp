@@ -46,7 +46,7 @@ export default class SignUp extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-
+        
         const { regusername, reguseremail, reguserphone, reguserpassword, regisshop } = e.target;
 
         let selectedrole = "user"
@@ -64,7 +64,7 @@ export default class SignUp extends Component {
             userpassword: reguserpassword.value,
             userrole: selectedrole
         }
-
+        console.log(user);
         this.setState({ error: null })
 
         fetch(this.state.config.API_ENDPOINT + 'user/', {
