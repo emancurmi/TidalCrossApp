@@ -99,7 +99,7 @@ export default class Nav extends Component {
 			<div className="navbar navbar-expand-md navbar-dark">
 				<div className="navbar-brand wmin-200">
 					<a href="/" className="d-inline-block">
-						<img src="./global_assets/images/logo_light.png" alt="" />
+						<img src="./global_assets/images/logo_new.png" alt="" />
 					</a>
 				</div>
 

@@ -52,7 +52,9 @@ export default class Profile extends Component {
                                 </div>
 
                                 <div className="card-body">
-                                    Basic card example without header elements
+                                    Tidal Cross is an application developed to help the contractors and professionals to make an order quicker.
+                                    <br/>
+                                    It will also help the shops to keep an efficient serivce by reducing the wait time for their coustomers orders.
 							</div>
                             </div>
                         </div>
@@ -62,7 +64,7 @@ export default class Profile extends Component {
                                     <h6 className="card-title">Contact Us</h6>
                                 </div>
 
-                                <div className="card-body">
+                                {/*<div className="card-body">
                                     <form action="#">
                                         <div className="form-group">
                                             <label>Your name:</label>
@@ -83,6 +85,9 @@ export default class Profile extends Component {
                                             <button type="submit" className="btn bg-blue ml-3">Submit <i className="icon-paperplane ml-2"></i></button>
                                         </div>
                                     </form>
+                                </div>*/}
+                                <div className="card-body">
+                                    <p>E-mail: <a href="mailto:info@tidalcross.com">info@tidalcross.com</a></p>
                                 </div>
                             </div>
                         </div>
