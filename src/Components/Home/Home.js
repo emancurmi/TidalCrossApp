@@ -29,7 +29,7 @@ export default class Home extends Component {
 								</div>
 
 								<div className="media-body text-white">
-									<h1 className="mb-0">Tidal Cross</h1>
+									<h1 className="mb-0">Tidalcross</h1>
 									<span className="d-block">Your Online Ordering System</span>
 								</div>
 
@@ -58,10 +58,10 @@ export default class Home extends Component {
 							</div>
 						</div>
 						*/}
-						{/*Why Business Owner's Loves Tidal Cross*/}
+						{/*Why Business Owner's Loves Tidalcross*/}
 						<div className="card">
 							<div className="card-header header-elements-inline">
-								<h1 className="card-title">Why Business Owner's Loves Tidal Cross</h1>
+								<h1 className="card-title">Why Business Owner's Loves Tidalcross</h1>
 							</div>
 							<div className="card-body">
 
@@ -117,7 +117,7 @@ export default class Home extends Component {
 						{/*How tidal cross works*/}
 						<div className="card">
 							<div className="card-header header-elements-inline">
-								<h1 className="card-title">How Tidal Cross Works?</h1>
+								<h1 className="card-title">How Tidalcross Works?</h1>
 							</div>
 							<div className="card-body">
 								<h6 className="font-weight-semibold">Fully Functional</h6>
@@ -352,7 +352,7 @@ export default class Home extends Component {
 					<div className="container">
 						<div className="row align-items-center justify-content-center">
 							<div className="col-md-6">
-								<h2 className="heading mb-3">Tidal Cross</h2>
+								<h2 className="heading mb-3">Tidalcross</h2>
 								<div className="sub-heading">
 									<p className="mb-4">The best tool for Professionals to gain valuable time.</p>
 								</div>
@@ -445,10 +445,10 @@ export default class Home extends Component {
 							<div className="col-md">
 								<div id="pb_faq" className="pb_accordion" data-children=".item">
 									<div className="item">
-										<a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq1" aria-expanded="true" aria-controls="pb_faq1" className="pb_font-22 py-4">What is Tidal Cross?</a>
+										<a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq1" aria-expanded="true" aria-controls="pb_faq1" className="pb_font-22 py-4">What is Tidalcross?</a>
 										<div id="pb_faq1" className="collapse show" role="tabpanel">
 											<div className="py-3">
-												<p>Tidal Cross is an application developed to help the contractors and professionals to make an order quicker. </p>
+												<p>Tidalcross is an application developed to help the contractors and professionals to make an order quicker. </p>
 												<p>It will also help the shops to keep an efficient serivce by reducing the wait time for their coustomers orders.</p>
 											</div>
 										</div>
@@ -462,15 +462,15 @@ export default class Home extends Component {
 										</div>
 									</div>
 									<div className="item">
-										<a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq3" aria-expanded="false" aria-controls="pb_faq3" className="pb_font-22 py-4">How do I use the features of Tidal Cross App?</a>
+										<a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq3" aria-expanded="false" aria-controls="pb_faq3" className="pb_font-22 py-4">How do I use the features of Tidalcross App?</a>
 										<div id="pb_faq3" className="collapse" role="tabpanel">
 											<div className="py-3">
-												<p>Tidal Cross is a very simple app. First you need to create an account and choose if you're a Shop or a Customer. Registering as a customer it gives you the ability to create new orders or view the status of your orders. Registering as a shop/supplier gives you the ability to advertise your store and get orders.</p>
+												<p>Tidalcross is a very simple app. First you need to create an account and choose if you're a Shop or a Customer. Registering as a customer it gives you the ability to create new orders or view the status of your orders. Registering as a shop/supplier gives you the ability to advertise your store and get orders.</p>
 											</div>
 										</div>
 									</div>
 									{/*<div className="item">
-										<a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq4" aria-expanded="false" aria-controls="pb_faq4" className="pb_font-22 py-4">How much do the Tidal Cross App cost?</a>
+										<a data-toggle="collapse" data-parent="#pb_faq" href="#pb_faq4" aria-expanded="false" aria-controls="pb_faq4" className="pb_font-22 py-4">How much do the Tidalcross App cost?</a>
 										<div id="pb_faq4" className="collapse" role="tabpanel">
 											<div className="py-3">
 												<p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.</p>

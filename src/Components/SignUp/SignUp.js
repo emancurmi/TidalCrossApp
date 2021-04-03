@@ -141,6 +141,7 @@ export default class SignUp extends Component {
 
                                     <div className="form-group form-group-feedback form-group-feedback-left">
                                         <input type="password" className="form-control" placeholder="Password" id="reguserpassword" name="reguserpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required />
+                                        <p>*password requires mixed case, numerals, and special characters</p>
                                         <div className="form-control-feedback">
                                             <i className="icon-lock2 text-muted"></i>
                                         </div>
