@@ -12,7 +12,6 @@ export default class Reset extends Component {
         super(props);
 
         this.state = {
-            config: config,
             userid: '',
             useremail: '',
             userpassword: '',
@@ -57,7 +56,7 @@ export default class Reset extends Component {
 
         this.setState({ error: null })
 
-        fetch(this.state.config.API_ENDPOINT + 'user/?useremail=' + user.useremail, {
+        fetch(config.API_ENDPOINT + 'user/?useremail=' + user.useremail, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',

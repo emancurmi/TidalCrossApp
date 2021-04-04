@@ -38,7 +38,7 @@ export default class Dashboard extends Component {
     }
 
     fetchuser = () => {
-        fetch(this.state.config.API_ENDPOINT + 'user/' + this.state.user.userid, {
+        fetch(config.API_ENDPOINT + 'user/' + this.state.user.userid, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',

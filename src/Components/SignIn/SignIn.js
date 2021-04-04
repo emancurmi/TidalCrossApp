@@ -12,7 +12,6 @@ export default class SignIn extends Component {
         super(props);
 
         this.state = {
-            config: config,
             userid: '',
             useremail: '',
             userpassword: '',
@@ -47,8 +46,8 @@ export default class SignIn extends Component {
     fetchConnction = () => {
 
         let found = false;
-
-        fetch(this.state.config.API_ENDPOINT + 'user/?useremail=' + user.useremail, {
+        console.log("not found");
+        fetch(config.API_ENDPOINT + 'user/?useremail=' + user.useremail, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
@@ -59,14 +58,16 @@ export default class SignIn extends Component {
                 if (!res.ok) {
                     found = false;
                 }
-                console.log(found);
-                return found
             })
+        console.log("found");
+        return found
+        
     }
 
     renderPage = () => {
+        let found = this.fetchConnction
 
-        if (this.fetchConnction === false) {
+        if (found === false) {
             console.log("connection error");
             <div><p>We are doing some maintenance!</p></div>
         }
@@ -144,7 +145,7 @@ export default class SignIn extends Component {
 
         this.setState({ error: null })
 
-        fetch(this.state.config.API_ENDPOINT + 'user/?useremail=' + user.useremail, {
+        fetch(config.API_ENDPOINT + 'user/?useremail=' + user.useremail, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',

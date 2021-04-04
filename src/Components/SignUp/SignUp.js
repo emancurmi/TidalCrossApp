@@ -65,7 +65,7 @@ export default class SignUp extends Component {
 
         this.setState({ error: null })
 
-        fetch(this.state.config.API_ENDPOINT + 'user/', {
+        fetch(config.API_ENDPOINT + 'user/', {
             method: 'POST',
             body: JSON.stringify(user),
             headers: {
