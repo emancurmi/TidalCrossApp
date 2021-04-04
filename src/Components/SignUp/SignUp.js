@@ -70,6 +70,7 @@ export default class SignUp extends Component {
             body: JSON.stringify(user),
             headers: {
                 'content-type': 'application/json',
+                'Authorization': `Bearer ${config.API_TOKEN}`
             }
         })
 

@@ -61,7 +61,7 @@ export default class Reset extends Component {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${this.state.config.API_TOKEN}`
+                'Authorization': `Bearer ${config.API_TOKEN}`
             }
         })
             .then(res => {

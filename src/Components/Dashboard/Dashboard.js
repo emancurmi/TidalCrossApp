@@ -16,7 +16,6 @@ export default class Dashboard extends Component {
         super(props);
 
         this.state = {
-            config: config,
             error: null,
             isLoading: true,
             user: {
@@ -38,12 +37,12 @@ export default class Dashboard extends Component {
         }
     }
 
-    loaduser = () => {
+    fetchuser = () => {
         fetch(this.state.config.API_ENDPOINT + 'user/' + this.state.user.userid, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${this.state.config.API_TOKEN}`
+                'Authorization': `Bearer ${config.API_TOKEN}`
             }
         })
             .then(res => {
@@ -85,7 +84,7 @@ export default class Dashboard extends Component {
 
     componentDidMount() {
         this.renderRedirect();
-        this.loaduser();
+        this.fetchuser();
     }
 
     render() {
