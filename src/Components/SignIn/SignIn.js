@@ -44,6 +44,93 @@ export default class SignIn extends Component {
         }
     }
 
+    fetchConnction = () => {
+
+        let found = false;
+
+        fetch(this.state.config.API_ENDPOINT + 'user/?useremail=' + user.useremail, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${config.API_TOKEN}`
+            }
+        })
+            .then(res => {
+                if (!res.ok) {
+                    found = false;
+                }
+                console.log(found);
+                return found
+            })
+    }
+
+    renderPage = () => {
+
+        if (this.fetchConnction === false) {
+            console.log("connection error");
+            <div><p>We are doing some maintenance!</p></div>
+        }
+        else {
+            console.log("connection found");
+            return(
+                  <form className = "login-form" onSubmit = { this.handleSubmit } >
+                    <div className="card mb-0">
+                        <div className="card-body">
+                            <div className="text-center mb-3">
+                                <i className="icon-reading icon-2x text-slate-300 border-slate-300 border-3 rounded-round p-3 mb-3 mt-1"></i>
+                                <h5 className="mb-0">Login to your account</h5>
+                                <span className="d-block text-muted">Your credentials</span>
+                            </div>
+
+                            <div className="form-group form-group-feedback form-group-feedback-left">
+                                <input type="text" className="form-control" placeholder="E-mail Address" id="useremail" name="useremail" required />
+                                <div className="form-control-feedback">
+                                    <i className="icon-user text-muted"></i>
+                                </div>
+                            </div>
+
+                            <div className="form-group form-group-feedback form-group-feedback-left">
+                                <input type="password" className="form-control" placeholder="Password" id="userpassword" name="userpassword" required />
+                                <div className="form-control-feedback">
+                                    <i className="icon-lock2 text-muted"></i>
+                                </div>
+                            </div>
+
+                            <div className="form-group d-flex align-items-center">
+                                {/*<div className="form-check mb-0">
+                                            <label className="form-check-label">
+                                                <input type="checkbox" name="remember" className="form-input-styled" checked />
+                                                            Remember
+									        </label>
+                                        </div>*/}
+
+                                <a href="/Reset" className="ml-auto">Forgot password?</a>
+                            </div>
+
+                            <div className="form-group">
+                                <button type="submit" id="btnLoginSubmit" className="btn btn-primary btn-block">Sign in <i className="icon-circle-right2 ml-2"></i></button>
+                            </div>
+
+                            {this.showerror()}
+
+                            <div className="form-group text-center text-muted content-divider">
+                                <span className="px-2">Don't have an account?</span>
+                            </div>
+
+                            <div className="form-group">
+                                <a href="/SignUp" className="btn btn-light btn-block">Sign up</a>
+                            </div>
+
+                            <span className="form-text text-center text-muted">By continuing, you're confirming that you've read our <a href="termsconditions">Terms &amp; Conditions</a> and <a href="cookiepolicy">Cookie Policy</a></span>
+                        </div>
+                    </div>
+                        </form>
+
+            )
+        }
+
+    }
+
     handleSubmit = e => {
 
         e.preventDefault();
@@ -110,6 +197,7 @@ export default class SignIn extends Component {
         this.renderRedirect();
     }
 
+
     render() {
         return (
 
@@ -119,58 +207,8 @@ export default class SignIn extends Component {
 
                     <div className="content d-flex justify-content-center align-items-center">
 
-                        <form className="login-form" onSubmit={this.handleSubmit}>
-                            <div className="card mb-0">
-                                <div className="card-body">
-                                    <div className="text-center mb-3">
-                                        <i className="icon-reading icon-2x text-slate-300 border-slate-300 border-3 rounded-round p-3 mb-3 mt-1"></i>
-                                        <h5 className="mb-0">Login to your account</h5>
-                                        <span className="d-block text-muted">Your credentials</span>
-                                    </div>
+                        {this.renderPage()}
 
-                                    <div className="form-group form-group-feedback form-group-feedback-left">
-                                        <input type="text" className="form-control" placeholder="E-mail Address" id="useremail" name="useremail" required/>
-                                        <div className="form-control-feedback">
-                                            <i className="icon-user text-muted"></i>
-                                        </div>
-                                    </div>
-
-                                    <div className="form-group form-group-feedback form-group-feedback-left">
-                                        <input type="password" className="form-control" placeholder="Password" id="userpassword" name="userpassword" required />
-                                        <div className="form-control-feedback">
-                                            <i className="icon-lock2 text-muted"></i>
-                                        </div>
-                                    </div>
-
-                                    <div className="form-group d-flex align-items-center">
-                                        {/*<div className="form-check mb-0">
-                                            <label className="form-check-label">
-                                                <input type="checkbox" name="remember" className="form-input-styled" checked />
-                                                            Remember
-									        </label>
-                                        </div>*/}
-
-                                        <a href="/Reset" className="ml-auto">Forgot password?</a>
-                                    </div>
-
-                                    <div className="form-group">
-                                        <button type="submit" id="btnLoginSubmit" className="btn btn-primary btn-block">Sign in <i className="icon-circle-right2 ml-2"></i></button>
-                                    </div>
-
-                                    {this.showerror()}
-
-                                    <div className="form-group text-center text-muted content-divider">
-                                        <span className="px-2">Don't have an account?</span>
-                                    </div>
-
-                                    <div className="form-group">
-                                        <a href="/SignUp" className="btn btn-light btn-block">Sign up</a>
-                                    </div>
-
-                                    <span className="form-text text-center text-muted">By continuing, you're confirming that you've read our <a href="termsconditions">Terms &amp; Conditions</a> and <a href="cookiepolicy">Cookie Policy</a></span>
-                                </div>
-                            </div>
-                        </form>
                         {this.renderRedirect()}
                     </div>
                 </div>
