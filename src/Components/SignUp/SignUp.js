@@ -32,15 +32,15 @@ export default class SignUp extends Component {
             userpassword: user.userpassword,
             userrole: user.userrole,
         })
-        bake_cookie(config.cookie_key, engine.encrypt(this.state.userid.toString()));
-        this.props.handleLogIn();
+        //bake_cookie(config.cookie_key, engine.encrypt(this.state.userid.toString()));
+        //this.props.handleLogIn();
         this.renderRedirect()
     }
 
 
     renderRedirect = () => {
         if (read_cookie(config.cookie_key).length !== 0) {
-            return <Redirect to='/dashboard/' />
+            return <Redirect to='/signin/' />
         }
     }
 
