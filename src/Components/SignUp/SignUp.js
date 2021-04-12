@@ -40,7 +40,7 @@ export default class SignUp extends Component {
 
     renderRedirect = () => {
         if (read_cookie(config.cookie_key).length !== 0) {
-            return <Redirect to='/signin/' />
+            return <Redirect to='/SignIn' />
         }
     }
 
